@@ -1,0 +1,7 @@
+python-dotenv
+jinja2
+requests
+transformers
+seaborn
+jupyter
+flask
