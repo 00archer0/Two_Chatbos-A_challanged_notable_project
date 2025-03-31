@@ -5,3 +5,5 @@ transformers
 seaborn
 jupyter
 flask
+pandas
+google.generativeai

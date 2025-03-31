@@ -1,46 +1,30 @@
 #!/bin/bash
+set -e
+source /home/vscode/.venv/bin/activate
 
-# Source environment variables
 if [ -f .env ]; then
-    echo "Loading environment variables..."
-    source .env
+    export $(cat .env | xargs)
 fi
 
-# Function to start a process in the background
 start_service() {
-  echo "Starting $1..."
-  $2 &
-  sleep 2
+    echo "Starting $1..."
+    ($2) &
+    sleep 2
 }
 
-# Kill background processes on exit
 trap 'kill $(jobs -p)' EXIT
 
-# Start the Node.js server
-start_service "API hosted" "python server.py"
+start_service "API" "python server.py"
+start_service "Calling Bot Rasa" "cd calling_bot_calm && rasa run --enable-api --cors '*' --port 5005"
+start_service "Calling Bot Actions" "cd calling_bot_calm && rasa run actions --port 5055"
+start_service "Real Estate Bot Rasa" "cd realstate_bot_calm && rasa run --enable-api --cors '*' --port 5006"
+start_service "Real Estate Bot Actions" "cd realstate_bot_calm && rasa run actions --port 5056"
+start_service "Frontend" "cd frontent_rasa_custom && http-server -p 8000"
 
-# Start calling bot
-cd calling_bot_calm
-start_service "Calling bot Rasa server" "rasa run --enable-api --cors '*'"
-start_service "Calling bot actions server" "rasa run actions"
-cd ..
+echo -e "\nServices running:
+- Frontend:   http://localhost:8000
+- API:        http://localhost:5000
+- Calling Bot: http://localhost:5005
+- Real Estate: http://localhost:5006"
 
-# Start real estate bot
-cd realstate_bot_calm
-start_service "Real estate bot Rasa server" "rasa run --enable-api --cors '*' --port 5006"
-start_service "Real estate bot actions server" "rasa run actions --port 5056"
-cd ..
-
-# Start frontend server
-cd frontent_rasa_custom
-start_service "Frontend server" "http-server -p 8000"
-cd ..
-
-echo "All services are running!"
-echo "- Frontend: http://localhost:8000"
-echo "- Calling Bot API: http://localhost:5005"
-echo "- Real Estate Bot API: http://localhost:5006"
-
-# Wait for Ctrl+C
-echo "Press Ctrl+C to stop all services"
 wait

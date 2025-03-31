@@ -11,19 +11,18 @@ RUN apt-get update && \
     sqlite3 \
     && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
-WORKDIR /workspace
-
 # Install Node.js dependencies for frontend
 RUN npm install -g http-server
 
-# Install Python dependencies - we'll install Rasa Pro separately in the setup script
+# Install Python dependencies
 RUN pip install --no-cache-dir --upgrade pip
 
-# Create non-root user
-RUN useradd -m vscode && \
-    chown -R vscode:vscode /workspace
-
+# Create non-root user and set work directory
+RUN useradd -m vscode
+WORKDIR /workspace
+RUN chown vscode:vscode /workspace
 USER vscode
 
-# We'll install Rasa Pro in the setup script to ensure environment variables are loaded
+# Create virtual environment
+RUN python -m venv /home/vscode/.venv
+ENV PATH="/home/vscode/.venv/bin:$PATH"

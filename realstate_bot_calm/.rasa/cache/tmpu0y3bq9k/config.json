@@ -1,0 +1,24 @@
+{
+  "priority": 5,
+  "nlu_abstention_threshold": 0.9,
+  "llm": {
+    "id": "mistral_llm",
+    "models": [
+      {
+        "provider": "gemini",
+        "model": "gemini-2.0-flash",
+        "api_key": "${GEMINI_API_KEY}"
+      }
+    ]
+  },
+  "embeddings": {
+    "id": "mistral_embeddings",
+    "models": [
+      {
+        "provider": "gemini",
+        "model": "text-embedding-004"
+      }
+    ]
+  },
+  "prompt": "/home/vscode/.venv/lib/python3.10/site-packages/rasa/core/policies/intentless_prompt_template.jinja2"
+}
