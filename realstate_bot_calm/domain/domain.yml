@@ -1,0 +1,409 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  
+  - view_property_details
+  - ask_legal_documentation
+  - ask_post_purchase_steps
+
+  - schedule_viewing
+  - compare_properties
+
+  - provide_viewing_feedback
+  - request_negotiation_support
+ 
+  - save_property
+  - view_saved_properties
+
+  - reset_search
+  - refine_search
+  - continue_search
+
+  - switch_language
+
+
+entities:
+  - floor_preference
+  - balcony_num
+  - facing
+  - property_id
+  - language
+  - search_stage
+  - rental_duration
+  - move_in_date
+  - property_details
+  - selling_reason
+  - listing_preference
+  - valuation_date
+  - valuation_time
+  - confirm_viewing
+  - refine_criteria
+  - search_next_action
+  - property_id_list
+  - document_clarification
+  - post_purchase_help
+  - final_text_filters
+  - schedule_viewing_date
+  - schedule_viewing_time
+  - selected_properties
+  - visit_id
+  - date
+  - time
+
+
+slots:
+  final_text_filters:
+    type: list
+    initial_value: []
+    mappings:
+      - type: controlled
+
+
+  property_id:
+    type: text
+    influence_conversation: true
+
+
+  search_stage:
+    type: categorical
+    values:
+      - initial
+      - location_set
+      - specifications_set
+      - budget_set
+      - amenities_set
+      - results_shown
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  rental_duration:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_llm
+
+
+  move_in_date:
+    type: text
+    influence_conversation: true
+
+
+  property_details:
+    type: text
+    influence_conversation: true
+
+
+  selling_reason:
+    type: text
+    influence_conversation: true
+
+
+  listing_preference:
+    type: text
+    influence_conversation: true
+
+
+  valuation_date:
+    type: text
+    influence_conversation: true
+
+
+  valuation_time:
+    type: text
+    influence_conversation: true
+
+
+  confirm_viewing:
+    type: bool
+    influence_conversation: true
+
+
+  refine_criteria:
+    type: text
+    influence_conversation: true
+
+
+  search_next_action:
+    type: text
+    influence_conversation: true
+
+
+  property_id_list:
+    type: text
+    influence_conversation: true
+    initial_value: ""
+
+
+  document_clarification:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_llm
+
+  post_purchase_help:
+    type: text
+    influence_conversation: true
+
+  schedule_viewing_date:
+    type: text
+    influence_conversation: true
+
+  schedule_viewing_time:
+    type: text
+    influence_conversation: true
+
+  selected_properties:
+    type: text
+    influence_conversation: true
+
+  visit_id:
+    type: any
+
+  new_schedule_date:
+      type: any
+
+    
+  new_schedule_time:
+      type: any
+
+    
+  scheduled_visits:
+      type: any
+      mappings:
+        - type: custom
+
+  property_address:
+    type: any
+    mappings:
+      - type: custom
+  
+
+
+responses:
+
+  utter_welcome:
+    - text: "Hello! How can in help you?"
+
+  utter_ask_visit_id:
+    - text: "Please provide the visit ID of the appointment you want to reschedule. If you don't know it, you can check your scheduled visits first."
+
+  utter_invalid_visit_id:
+    - text: "I couldn't find a visit with that ID. Please check your scheduled visits and try again."
+  
+  utter_ask_property_purpose:
+    - text: "What’s the plan — buying your dream home or renting a cozy place?"
+    - text: "Are you planning to buy or rent a property today?"
+    - text: "Are you looking to buy or rent a property? Just type 'buy' or 'rent' to get started!"
+
+  utter_ask_location:
+    - text: "Got a location in mind? Just type the city or area name, like 'Delhi' or 'MG Road'!"
+    - text: "Where are you thinking of finding a place? Drop the location name here."
+    - text: "Where should I focus the search? For example, 'South Delhi' or 'Bandra West'."
+
+  utter_location_confirmed:
+    - text: "Awesome! I’ll focus on properties in {location}."
+    - text: "Got it! Let’s explore some great options in {location}."
+    - text: "Perfect! I’ll look for places around {location}."
+
+  utter_ask_bedroom_num:
+    - text: "How many bedrooms are you thinking of? (e.g., 2BHK, 3BHK)"
+    - text: "Need a cozy 1BHK or a spacious 3BHK? Let me know!"
+    - text: "How many bedrooms would you prefer? Just type a number."
+
+  utter_ask_bathroom_num:
+    - text: "How many bathrooms do you need? (e.g., 1, 2, or more)"
+    - text: "Looking for an extra bathroom for guests? Let me know!"
+    - text: "How many bathrooms would be ideal for you?"
+
+  utter_ask_floor_preference:
+    - text: "Do you have a preference for the floor level? (e.g., ground floor, top floor)"
+    - text: "Would you prefer a higher floor for a better view or something closer to the ground?"
+    - text: "Floor preference — top floor, middle, or ground floor?"
+
+  utter_ask_balcony:
+    - text: "Do you need a balcony? (Yes/No)"
+    - text: "Fancy a morning coffee on the balcony? Let me know!"
+    - text: "Is a balcony important for you?"
+
+  utter_ask_budget:
+    - text: "What’s your budget range? (e.g., ₹30L - ₹50L)"
+    - text: "What’s your budget? Just share an approximate range."
+    - text: "How much are you planning to spend? Type a range like ₹30L - ₹50L."
+
+  utter_ask_amenities:
+    - text: "What amenities matter most to you? (e.g., gym, swimming pool, parking)"
+    - text: "Looking for specific amenities like a pool, parking, or gym?"
+    - text: "What’s on your wishlist? E.g., kids' play area, clubhouse, or power backup."
+
+  utter_search_results:
+    - text: "Here are the properties that match your criteria! 🎯"
+    - text: "I've found some options that fit your search — check them out!"
+    - text: "Here’s what I’ve found for you! Let me know which one interests you."
+
+  utter_provide_property_details:
+    - text: "Here are the details for the property you selected. 🏡"
+    - text: "Here’s a closer look at the property — hope you like it!"
+    - text: "Take a look at the details — sounds like a good match!"
+
+  utter_ask_schedule_viewing:
+    - text: "Would you like to schedule a viewing? (Yes/No)"
+    - text: "Want to check it out in person? Let me schedule it for you."
+    - text: "Should I set up a viewing for you?"
+
+  utter_confirm_scheduling:
+    - text: "Your viewing has been scheduled! 📅"
+    - text: "Viewing scheduled! I hope you love it."
+
+  utter_viewing_confirmed:
+    - text: "Your viewing is confirmed! See you there. 😊"
+    - text: "All set! Your viewing is confirmed."
+    - text: "Confirmed! Let me know if you need anything else."
+
+  utter_invalid_option:
+    - text: "That option doesn’t seem right. Could you try again?"
+    - text: "Hmm… I didn’t catch that. Can you clarify?"
+    - text: "Oops! That’s not a valid option. Let’s try again."
+
+  utter_current_search_criteria:
+    - text: "Here are your current search criteria. Let me know if you’d like to adjust anything."
+    - text: "Here's what we're working with so far — feel free to tweak it!"
+    - text: "Your search details so far — let me know if you want to change anything."
+
+  utter_ask_specific_requirements:
+    - text: "Any other specific needs? E.g., pet-friendly, Vastu compliant?"
+    - text: "Do you have any other must-haves or deal breakers?"
+    - text: "Anything else you’d like to add to your wishlist?"
+
+  utter_ask_filter_to_add:
+    - text: "Please, Let me the know the filters. if you want to apply to your property search."
+      metadata:
+        rephrase: False
+
+  utter_invalid_refine_option:
+    - text: "That doesn’t seem right. Let’s adjust it."
+    - text: "I couldn’t process that. Let’s try again."
+    - text: "That’s not a valid option. Let’s refine it together."
+
+  utter_ask_rental_duration:
+    - text: "How long do you need the rental for? (e.g., 6 months, 1 year)"
+    - text: "Short-term or long-term rental?"
+    - text: "What’s your ideal rental period?"
+
+  utter_ask_furnishing_preference:
+    - text: "Do you prefer a furnished or unfurnished property?"
+    - text: "Furnished or unfurnished — what works better for you?"
+    - text: "Need it fully furnished or happy with a blank canvas?"
+
+  utter_ask_move_in_date:
+    - text: "When do you plan to move in?"
+    - text: "Looking to move in soon or later?"
+    - text: "What’s your ideal move-in date?"
+
+  utter_ask_selling_property_details:
+    - text: "Can you provide some details about the property you want to sell?"
+    - text: "Tell me a bit about the property — size, location, condition?"
+    - text: "What are the key details of the property you’re selling?"
+
+  utter_ask_property_age:
+    - text: "How old is the property?"
+    - text: "When was the property built?"
+    - text: "Is it a new construction or a resale?"
+
+  utter_ask_selling_reason:
+    - text: "Why are you looking to sell?"
+    - text: "What’s the reason for selling?"
+    - text: "Selling to upgrade, relocate, or something else?"
+
+  utter_property_valuation_estimate:
+    - text: "Here’s the estimated valuation for your property. 💰"
+    - text: "Your property’s estimated value is ready!"
+    - text: "Here’s a rough estimate — hope it helps!"
+
+  utter_ask_listing_preference:
+    - text: "How would you like to list your property? (e.g., online, agent)"
+    - text: "Do you want to list it privately or through an agent?"
+    - text: "Let’s set up the listing! How would you like to proceed?"
+
+  utter_property_listing_confirmation:
+    - text: "Your property listing has been created! 🎉 I'll keep you updated with any leads."
+    - text: "Great news! Your property is now listed. Let me know if you need to update anything."
+    - text: "All set! Your property listing is live now. Let's get some buyers!"
+
+  utter_ask_next_step:
+    - text: "Would you like to take the next step — schedule a visit, adjust your listing, or explore more options?"
+    - text: "What’s next? Want to schedule a visit or adjust your search?"
+    - text: "Ready for the next step? Let me know how I can help!"
+
+  utter_property_saved:
+    - text: "Got it! I've saved this property for you. ✅"
+    - text: "This property is now saved in your favorites. Let me know if you need more info!"
+    - text: "Saved! You can check this property anytime in your saved list."
+
+  utter_switch_language_confirm:
+    - text: "Language switched successfully! 🌍"
+    - text: "You’re all set in the new language."
+    - text: "Language updated! Let me know if you need help navigating."
+
+  utter_search_reset:
+    - text: "Search reset! You can start a new search anytime. 🔄"
+    - text: "Got it! Let’s start fresh. What are you looking for now?"
+    - text: "Search cleared — ready to explore new options?"
+  
+  utter_ask_property_details:
+    - text: "To schedule a viewing, please provide the property ID. Or to get it check the saved ones to select"
+
+  utter_ask_schedule_viewing_time:
+    - text: "What time would you prefer for the viewing?"
+    - text: "Please specify the time you'd like to schedule the viewing."
+    - text: "And what time works best for you on that day?"
+
+  utter_ask_schedule_viewing_date:
+    - text: "What date would you prefer for the viewing?"
+
+  utter_confirm_cancellation:
+    - text: "Your visit has been cancelled successfully."
+  
+  utter_show_scheduled_visits:
+    - text: "Here are your scheduled visits:"
+
+  utter_ask_new_schedule_date:
+    - text: "What's the new date for your visit? (Please provide in YYYY-MM-DD format)"
+  
+  utter_ask_new_schedule_time:
+    - text: "What's the new time for your visit? (Please provide in HH:MM format)"
+  
+  utter_confirm_rescheduling:
+    - text: "Your visit has been successfully rescheduled."
+  
+  utter_ask_visit_id_for_cancellation:
+    - text: "Please provide the visit ID of the appointment you want to cancel. If you don't know it, you can check your scheduled visits first."
+
+actions:
+  - action_search_properties
+  - action_fetch_property_details
+  - action_schedule_viewing
+  - action_assess_property_value
+  - action_save_property
+  - action_provide_neighborhood_info
+  - action_handle_language_switch
+  - action_reset_search
+  - action_show_saved_properties
+  - action_compare_properties
+  - action_provide_legal_details
+  - action_provide_post_purchase_guidance
+  - action_schedule_valuation
+  - action_restore_conversation_context
+  - action_validate_property_list
+  - action_save_scheduling_details
+  - action_check_scheduled_visits
+  - action_reschedule_visit
+  - action_cancel_visit
+
+session_config:
+  session_expiration_time: 0
+  carry_over_slots_to_new_session: false

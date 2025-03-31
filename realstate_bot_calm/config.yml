@@ -1,0 +1,72 @@
+recipe: default.v1
+language: en
+pipeline:
+# - name: WhitespaceTokenizer
+# - name: CountVectorsFeaturizer
+# - name: CountVectorsFeaturizer
+#   analyzer: char_wb
+#   min_ngram: 1
+#   max_ngram: 4
+# - name: LanguageModelFeaturizer
+#   model_name: "bert"
+#   model_weights: "sentence-transformers/all-MiniLM-L6-v2"
+# - name: LogisticRegressionClassifier
+#   max_iter: 500
+#   solver: lbfgs
+#   tol: 0.0001
+#   random_state: 42
+#   ranking_length: 3
+# - name: "SklearnIntentClassifier"
+#   C: [1, 2, 5, 10, 20, 100]  # Regularization parameter
+#   kernels: ["rbf"] # Or ["rbf"], ["poly"]
+#   gamma: [0.01,0,001] # Only relevant for 'rbf' and 'poly' kernels
+#   max_cross_validation_folds: 5
+#   scoring_function: "f1_weighted"
+# -name: "CRFEntityExtractor"
+- name: simple_entity_extractor.GeminiEntityExtractor
+# - name: DucklingEntityExtractor
+#   url: "http://localhost:8000"
+# - name: "HFTransformersNLP"
+# - name: "LanguageModelFeaturizer"
+#   model_name: "bert"
+#   model_weights: "sentence-transformers/all-MiniLM-L6-v2"
+# - name: "SklearnIntentClassifier"
+#   C: [1, 2, 5]
+#   kernels: ["linear"]
+#   max_cross_validation_folds: 5
+#   scoring_function: "f1_weighted"
+#   class_weight: "balanced"
+# - name: LLMclassifier.MistralIntentClassifier
+# - name: NLUCommandAdapter
+- name: custom.custom_cmd_gen.CustomLLMCommandGenerator
+  prompt_template: prompt_templates/time_aware_prompt.jinja2
+  llm:
+    model_group: mistral_llm
+  flow_retrieval:
+      active: true
+      num_flows: 5
+      embeddings:
+        model_group: mistral_embeddings
+  
+
+
+policies:
+# - name: RulePolicy
+# - name: TEDPolicy
+  # constrain_similarities: true
+- name: FlowPolicy
+- name: IntentlessPolicy
+  llm:
+    model_group: mistral_llm
+  embeddings:
+    model_group: mistral_embeddings
+- name: EnterpriseSearchPolicy
+  vector_store:
+    type: "faiss"
+    threshold: 0.0
+  llm:
+    model_group: mistral_llm
+  embeddings:
+    model_group: mistral_embeddings
+
+assistant_id: 20240513-110741-taxonomic-iron

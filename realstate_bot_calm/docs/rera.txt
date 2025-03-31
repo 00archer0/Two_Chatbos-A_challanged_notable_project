@@ -1,0 +1,99 @@
+# Compensation for defects in construction after possession under RERA
+
+RERA mandates a defect liability period during which the builder must repair covered defects within five years of possession or compensate the homebuyer. This article explains the RERA provisions on post-possession defects in residential properties, the types of defects covered, how to claim compensation, real examples of claims, the challenges involved, and alternative legal remedies beyond RERA.
+
+## **Legal provisions under RERA**
+
+**Defect liability under Section 14(3):** RERA establishes a five-year defect liability period from the date of handing over possession. If any defect in the building’s structure, workmanship, quality, or provided services is noticed by the allottee within this period, the promoter is legally bound to rectify it **at no cost** within 30 days of notice​. 
+
+If the builder fails to do so in that time, the homebuyer is entitled to seek compensation for the unresolved defect as per the Act. This statutory warranty covers issues like structural defects and other deficiencies defined in the sale agreement, ensuring the buyer isn’t left to foot the bill for construction faults.
+
+**Builder’s obligations and enforcement:** The builder must attend to notified defects promptly and cannot charge the buyer for these repairs. Importantly, they cannot contract out of this obligation – any clause attempting to limit the five-year liability or waiver of responsibility would be invalid under RERA. The law essentially gives homebuyers a warranty on the construction. To enforce this, RERA empowers the regulator to take action if builders don’t comply. Regulators can impose penalties or fines on a developer for failing to honor the defect liability clause​. 
+
+In practice, this means if a builder ignores a legitimate defect complaint, the RERA Authority can order repairs and also levy a penalty or direct compensation. Thus, RERA creates accountability: the developer must deliver a home free of major defects and address any issues that arise in the initial years, or face legal consequences.
+
+## **Types of construction defects**
+
+*Figure: Severe cracks in a building’s facade – an example of a structural defect that a builder must repair under RERA’s defect liability.* Construction defects in homes can manifest in many ways, and RERA’s warranty covers the significant ones. Common types of defects include:
+
+-   **Structural defects:** Flaws that affect the stability or safety of the building. This can include major cracks in beams, columns or walls, sinking foundations, or other structural failures. Such defects can threaten the integrity of the home, so if they appear within five years, the builder must fix them to restore structural soundness.
+-   **Poor workmanship:** These are construction quality issues due to substandard work. Signs of poor workmanship might be uneven flooring, improper tiling, doors or windows that don’t fit correctly, cracked plaster, or paint peeling because of inadequate surface preparation. While some issues are cosmetic, they can point to deeper quality problems. RERA requires the builder to rectify significant workmanship defects that affect the usability or aesthetics of the property (for example, large areas of plaster coming off or persistently sticking doors due to frame misalignment).
+-   **Plumbing and leakage issues:** Water-related defects are very common. Examples are water seepage from roofs or walls, leaking bathroom pipes, faulty drainage, or damp patches indicating poor waterproofing. These can cause damage to interiors and pose health risks (mold, etc.). Under RERA’s defect liability clause, any such leaks or plumbing defects discovered in the early years have to be corrected by the developer​.  
+      
+    For instance, if a ceiling starts dripping during rain due to improper waterproofing, the builder must resolve it (by re-waterproofing, replacing pipes, etc.) without charging the owner.
+-   **Electrical defects:** Problems in the electrical wiring or fixtures provided by the builder. This could be frequent short-circuits, non-functional plug points, improper earthing, or circuit breakers tripping because of wiring faults. Electrical defects inconvenience the residents and pose fire and safety hazards. Under the defect liability, the builder must fix wiring issues or replace defective electrical fittings that come to light within five years – ensuring the home’s electrical system is safe and up to standard.
+-   **Material and equipment defects:** If the builder used substandard materials or equipment that led to failures, those are covered too. Examples are inferior concrete or steel causing cracks, low-quality tiles that crack or pop out, or doors and windows warping due to poor material. It also includes defects in fixtures or services installed by the builder (e.g. a water pump or generator not working, if it’s due to installation fault). However, it generally wouldn’t cover normal wear and tear or issues after manufacturer warranties expire for appliances​. The key is that if a construction component fails prematurely because of the builder’s choices, it should be rectified at the builder’s expense.
+
+## **Process to claim compensation**
+
+Homeowners should follow a structured process to claim repair or compensation for defects under RERA:
+
+1.  **Notify the builder:** As soon as a defect is observed, inform the builder/developer in writing and give them a chance to fix it. Describe the issue and the date you took possession (to show it’s within five years). This step is essential because RERA expects the builder to be given an opportunity first. The builder is supposed to rectify the defect within 30 days of your notice​.  
+      
+    Keep proof of this communication (such as email records or a letter receipt). If the builder acknowledges and fixes the issue, the matter may get resolved without regulatory intervention. But if they ignore the complaint, do a temporary patch-up, or deny the problem, then you proceed to the next step.
+2.  **File a RERA complaint:** If the builder fails to resolve the defect promptly or refuses responsibility, the homeowner can complain with the state’s RERA Authority. Gather all evidence of the defect and your correspondence – photographs of the problem, copies of your written notice to the builder, any expert opinions if available, etc. Using the state RERA website or office, file an official complaint under Section 31 of RERA, citing the builder’s violation of Section 14(3). In the complaint, you can request the authority to direct the builder to fix the defect and/or seek monetary compensation for any losses caused. Upon receiving the complaint, RERA will typically schedule a hearing and notify the builder.
+3.  **Attend hearing and present your case:** RERA proceedings are relatively straightforward. Both you and the builder (or their representatives) will get a chance to present your sides. As the complainant, explain the defects and how the builder did not address them despite notice. Submit your evidence – for example, show pictures of the cracks or leakages, and copies of letters. The builder may try to argue that the issue is minor or due to factors beyond their control. The RERA authority will examine the facts to determine if it is indeed a construction defect covered by the Act. In many cases, if the evidence clearly shows a defect and the builder’s lack of action, the authority will side with the homebuyer.
+4.  **Outcome – repair or compensation:** If the complaint is upheld, RERA will issue an order for relief. The authority may direct the builder to rectify the defect within a set timeframe and/or pay appropriate compensation​.  
+      
+    Builders are legally bound to comply with such orders, and failure can attract additional penalties. In practice, the prospect of a RERA order usually prompts the builder to take the necessary corrective action. In some cases, builders have appealed RERA orders to higher forums, which can temporarily delay the remedy, but overall RERA is much faster than traditional litigation.
+
+## **Real-life examples**
+
+-   **Maharashtra:** In one case, the Maharashtra RERA authority directed a builder to repair defects like water leakage and cracked plaster that were causing seepage into flats​. The builder complied and fixed these issues, affirming that the developer must resolve even post-possession problems.
+-   **Gujarat:** In Gujarat, a homebuyer faced persistent wall dampness due to plumbing leaks. When the builder did not remedy it, the Gujarat RERA ordered proper repairs and waterproofing to eliminate the dampness​, forcing the builder to carry out the necessary fixes.
+-   **Uttar Pradesh:** In Nеwtеch Promotеrs v. Statе of UP, thе Suprеmе Court uphеld a RERA authority’s dеcision to award compеnsation to buyеrs for structural dеfеcts that thе dеvеlopеr failеd to rеctify​. This casе sеt a prеcеdеnt that homеbuyеrs can rеcеivе monеtary compеnsation undеr RERA if buildеrs nеglеct thеir dеfеct liability obligations.
+
+These instances show RERA making a tangible difference. Homeowners have used the Act to get builders to address issues ranging from leaky ceilings to structural flaws, and regulators have not hesitated to enforce repairs or grant compensation. Developers are learning that ignoring defect complaints can lead to legal penalties and financial liability under RERA.
+
+## **Challenges and limitations**
+
+Homebuyers do face some challenges and limitations in claiming compensation for defects under RERA:
+
+-   **Delays and denial by builders:** A common hurdlе is thе buildеr’s rеluctancе to acknowlеdgе or addrеss dеfеcts. Somе dеvеlopеrs dеlay taking action, hoping to run out thе clock or avoid costs. Othеrs may dismiss thе issuе as minor or blamе thе homеownеr. This forcеs buyеrs to еscalatе thе mattеr. For еxamplе, in Hydеrabad 15 casеs wеrе rеgistеrеd within a six-month span against buildеrs for not carrying out rеquirеd rеpairs​ . This shows that somе dеvеlopеrs’ inaction forcеs homеbuyеrs to sееk lеgal rеcoursе and еndurе dеlays.
+-   **Builder non-compliance with orders:** Even after a RERA order, there can be non-compliance. A builder might not execute the repairs by the deadline or resist paying compensation immediately. This necessitates follow-up enforcement. RERA authorities do have powers to penalize non-compliance (e.g. fines or recovery as arrears of land revenue)​, but exercising these measures can take time. In effect, while RERA orders are legally binding, a recalcitrant builder can delay the actual relief, requiring the buyer to pursue enforcement. Some builders also appeal RERA decisions to delay enforcement, which can prolong the dispute despite RERA’s intent for speedy resolution.
+-   **Limitations of RERA’s scope:** RERA’s defect liability covers only the first five years after possession. Furthermore, RERA applies only to registered projects and issues arising within five years; beyond that or in projects outside its ambit, the Act’s remedies are unavailable. Moreover, normal wear-and-tear or maintenance-related problems are not covered as defects under RERA​. These limitations mean that if a major issue surfaces after five years or falls outside what RERA considers a defect, the homeowner must seek other legal avenues.
+
+Despite these challenges, RERA has overall made it easier and faster for buyers to get defects addressed than in the pre-2016 scenario. Many builders now respond more promptly to defect complaints because they know the legal implications. For the homeowner, awareness and persistence are key: knowing the rights under RERA, acting within the warranty period, and being prepared to approach the authority if the builder stonewalls.
+
+## **Alternative legal remedies**
+
+For defects not adequately covered under RERA or in situations where RERA is not applicable, homebuyers have other legal avenues:
+
+-   **Consumer forums (consumer courts):** Homebuyers can file a case under consumer protection laws, as poor construction quality is treated as a “deficiency in service.” Consumer Disputes Redressal Commissions can direct the builder to make repairs and also award compensation for harassment or loss. For example, a consumer court directed a builder to pay about ₹5 lakh for repairs and an additional ₹50,000 for the hardship caused by a poorly constructed flat​. The advantage of consumer courts is the ability to grant such compensation. However, consumer cases can take longer than RERA proceedings, and one must file the complaint within the limitation period (usually within 2 years of noticing the defect).
+-   **Civil suits:** A homeowner also has the option to file a civil suit for breach of contract or negligence against the developer in civil court. Through a civil suit, one can claim damages for defects and force the builder to fulfill contractual promises. The downside is that civil litigation is typically time-consuming and costly. It might be considered when the amounts involved are very high or other remedies have failed. In practice, most defect issues get resolved via RERA or consumer courts, and a civil suit is a last resort.
+
+## **Housing.com POV**
+
+The right to a structurally sound, livable home doesn’t end at possession—it begins there. RERA has empowered homeowners to demand accountability from builders long after the keys are handed over. With a five-year defect liability period and a clear legal pathway for complaints and compensation, buyers no longer have to suffer in silence over poor workmanship or faulty construction. However, the law works best when buyers are proactive—document issues, communicate with builders, and act quickly. If handled right, RERA is not just a regulatory tool but a shield that protects the homebuyer’s investment and peace of mind long after the purchase.
+
+## **FAQs**
+
+### What if the builder denies the defect or blames the homeowner?
+
+You can still file a complaint with the RERA authority, along with evidence, and they will decide based on facts.
+
+### Does the five-year defect liability start from possession or registration?
+
+It starts from the date of physical possession of the property, not registration of the sale deed.
+
+### Can I claim compensation if the builder doesn’t fix a defect within 30 days?
+
+Yes, if the builder fails to repair within the timeline, you can seek compensation through RERA.
+
+### Are water leakage and seepage covered under RERA’s defect clause?
+
+Yes, issues like leakage and poor waterproofing are covered if reported within five years.
+
+### Can I use both RERA and consumer court for the same defect issue?
+
+No, you must choose one forum—either RERA or the consumer court—for the same grievance.
+
+### Is an unregistered project covered under RERA for defect claims?
+
+No, RERA’s provisions apply only to projects registered with the state RERA authority.
+
+### What if a builder refuses to comply with a RERA order?
+
+You can approach the RERA authority again for enforcement; they can impose penalties or recover dues.
+
+

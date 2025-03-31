@@ -1,0 +1,46 @@
+## Task Description
+Update real estate filters using EXACTLY this structure:
+[
+  {% for filter in filters %}
+  {
+    "type": "{{ filter.type }}",
+    "title": "{{ filter.title }}",
+    {% if filter.multiSelect %}"multiSelect": {{ filter.multiSelect|lower }},{% endif %}
+    "options": [
+      {% for option in filter.options %}
+      {"name": "{{ option.name }}", "enabled": {{ option.enabled|lower }}}{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }{% if not loop.last %},{% endif %}
+  {% endfor %}
+]
+
+## Rules
+1. "enabled" must be true/false ONLY
+2. Handle synonyms:
+   - "flat" → "Flat/Apartment"
+   - "villa" → "Gated Community Villa"
+   - "new" → saleType.New
+3. Negation words ("not", "remove") flip existing enabled status
+4. For ranges (budget/coveredArea):
+   - "under 50L" → "currentMax": 500000
+   - "50-70L" → "currentMin": 500000, "currentMax": 700000
+
+## Examples
+User: "Show 2-3 BHK new flats not farm houses"
+→ [
+  {"type": "propertyType", "options": [
+    {"name": "Flat/Apartment", "enabled": true},
+    {"name": "Farm House", "enabled": false}
+  ]},
+  {"type": "bhkType", "options": [
+    {"name": "2 BHK", "enabled": true},
+    {"name": "3 BHK", "enabled": true}
+  ]},
+  {"type": "saleType", "options": [
+    {"name": "New", "enabled": true}
+  ]}
+]
+
+Current Filters: {{ property_filters|tojson }}
+User Message: "{{ user_message }}"

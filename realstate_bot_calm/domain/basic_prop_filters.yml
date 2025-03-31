@@ -1,0 +1,83 @@
+version: "3.1"
+
+intents:
+  - search_property_rent
+  - search_property_buy_live
+  - ask_neighborhood_info
+
+  - search_property_buy_invest
+  - ask_investment_potential
+
+  - search_property_sell
+
+  - set_location_preference
+  - set_property_specification
+  - set_budget
+  - set_amenity_preference
+
+entities:
+  - property_purpose
+  - location
+  - property_type
+  - bedroom_num
+  - bathroom_num
+  - budget_min
+  - budget_max
+  - area_min
+  - area_max
+  - furnishing_preference
+  - amenities
+  - property_age
+
+slots:
+  property_purpose:
+    type: categorical
+    values:
+      - buy
+      - rent
+    mappings:
+      - type: from_llm
+
+  location:
+    type: text 
+    initial_value: ""
+
+  property_type:
+    type: text 
+    initial_value: ""
+
+  bedroom_num:
+    type: text
+    initial_value: ""
+
+  bathroom_num:
+    type: text
+    initial_value: ""
+
+  budget_min:
+    type: float
+    initial_value: 0
+
+  budget_max:
+    type: float
+    initial_value: 0
+
+  area_min:
+    type: float 
+    initial_value: 0
+
+  area_max:
+    type: float
+    initial_value: 0
+
+  furnishing_preference:
+    type: text 
+    initial_value: ""
+
+  amenities:
+    type: text
+    initial_value: ""
+
+  property_age:
+    type: text
+    initial_value: ""

@@ -1,0 +1,91 @@
+# Frequently Asked Questions - Real Estate Chatbot
+
+## Basic Navigation
+
+**Q: How do I start a new conversation?**
+A: Click the "+ New Session" blue button on the left side panel to start a fresh conversation with the chatbot.
+
+**Q: How do I view my saved properties?**
+A: You can view saved properties by clicking on "Saved Properties" tab in the upper right corner of the screen. Alternatively, you can type "show me my saved properties" or "get me the saved properties" to the chatbot.
+
+**Q: How do I search for properties in a specific location?**
+A: When the chatbot prompts "Where are you thinking of finding a place? Drop the location name here," simply type the location (e.g., "Delhi") and press enter.
+
+## Property Preferences
+
+**Q: How do I specify my property type preferences?**
+A: Click on the "Filters" tab in the upper right corner. Under "Type of Property," select options like Residential Apartment, Independent House/Villa, Residential Land, etc.
+
+**Q: How do I set my budget range?**
+A: In the Filters section, adjust the slider under "Budget" to set your minimum and maximum price range.
+
+## Search Results
+
+**Q: How do I save a property I'm interested in?**
+A: Click the heart icon next to any property listing to save it to your favorites.
+
+**Q: How do I get more details about a property?**
+A: Click on the property card or type "show me details for [property ID]" to the chatbot OR click in property card itself.
+
+**Q: How do I know how far a property is from my preferred location?**
+A: The distance is displayed on each property card (e.g., "4.8 kms away").
+
+
+**Q: What information is available about each property?**
+A: Each property listing shows:
+- Property type and location (e.g., "3 BHK Flat in Sector 112 Gurgaon")
+- Price (e.g., "₹3.85 Cr")
+- Price per sq.ft. (e.g., "₹17K/sq.ft")
+- Total area (e.g., "2225 sq ft")
+- Construction status (e.g., "Under Construction")
+- Possession date (e.g., "May, 2031")
+
+**Q: How do I filter properties based on amenities?**
+A: In the Filters section, expand "Amenities" and select features like Swimming Pool, Power Back-up, etc.
+
+**Q: What if I can't find properties in my desired location?**
+A: Try expanding your search to nearby areas or adjusting your filters to broaden your search criteria.
+
+**Q: How do I clear all my filters and start over?**
+A: Click the "Clear" button at the bottom of the Filters panel.
+
+**Q: How do I apply my selected filters?**
+A: After selecting your desired filters, click the "Apply" button at the bottom of the Filters panel.
+
+**Q: Can I search for only sale or only rental properties?**
+A: Yes, under "Transaction Type" in the Filters section, select either "Sale" or "Rent" based on your preference.
+
+
+**Q: Can I ask the chatbot to compare multiple properties?**
+A: Yes, type something like "Compare the property in Sector 112 with the one in Sector 66" to get a comparison.
+
+**Q: How do I get the chatbot to filter by price range?**
+A: You can type requests like "Show me flats under 3 Cr" or "Find properties between 2 Cr and 4 Cr" in the message box.
+
+**Q: How do I know which session I'm currently in?**
+A: The active session is highlighted in blue in the left sidebar panel with all your session history.
+
+**Q: How do I go back to a previous conversation?**
+A: Click on any previous session in the left sidebar to view that conversation.
+
+**Q: How long are my sessions saved?**
+A: Sessions are typically saved for the duration of your account, but for specific retention policies 3 months.
+
+**Q: How do I get more information about the neighborhood?**
+A: Ask the chatbot something like "Tell me about the neighborhood in Sector 112" or "What amenities are nearby this property?"
+
+**Q: Can I get floor plans for a property?**
+A: Ask the chatbot "Show me the floor plan for this property" or "Do you have floor plans for the flat in Sector 66?"
+
+**Q: How do I update my property preferences?**
+A: You can update your preferences anytime by adjusting the filters or telling the chatbot about your new requirements.
+
+
+**Q: How do I schedule a property viewing?**
+A: Type "I want to view this property" or "Schedule a visit to [property ID]" in the message box.
+
+**Q: What if the chatbot doesn't understand my query?**
+A: Try rephrasing your question or using simpler language. If issues persist, look for a "Help" or "Support" option in the menu.
+
+**Q: Can I use this chatbot on mobile devices?**
+A: Yes, the webapp is designed to be responsive and works on both desktop and mobile browsers.

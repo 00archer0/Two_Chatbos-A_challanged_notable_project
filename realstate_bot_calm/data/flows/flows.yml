@@ -1,0 +1,271 @@
+version: "3.1"
+
+flows:
+  welcome:
+    description: Greet the user and ask how you can help
+    steps:
+      - action: utter_welcome
+      - action: utter_ask_property_purpose
+
+  show_property_results_flow:
+    description: Show pulled results from database for buy or rent search
+    persisted_slots:
+      - location
+    steps:
+      - id: collect_location
+        collect: location
+        description: Collects the 'location' input from the user to define their search area (e.g., 'New York', 'Chicago').
+        next:
+          - if: slots.location == ""
+            then:
+              - set_slots:
+                  - location: null
+                next: collect_location
+          - else:
+              - action: utter_location_confirmed
+              - action: action_search_properties
+                next: END
+
+  show_property_details_flow:
+    description: |
+      retrieve and present comprehensive details about a specific property to the user.
+      It aims to provide a rich and informative experience by gathering information not only about the property itself,
+      but also about its surrounding environment, including neighborhood characteristics, locality details, society information,
+      cultural aspects, and other relevant contextual data.
+    steps:
+      - action: action_fetch_property_details
+      # - action: utter_provide_property_details
+
+  show_property_neighborhood_details_flow:
+    description: |
+      Retrieves and presents detailed information about the neighborhood surrounding a specific property.
+      Focuses on aspects like safety, schools, transportation, and essential services.
+    steps:
+      - action: action_fetch_property_details
+
+  show_property_locality_details_flow:
+    description: |
+      Retrieves and presents detailed information about the locality of a specific property.
+      Focuses on proximity to commercial and recreational areas, local regulations, and future development plans.
+    steps:
+      - action: action_fetch_property_details
+
+  show_property_society_details_flow:
+    description: |
+      Retrieves and presents detailed information about the residential society (if applicable) of a specific property.
+      Focuses on maintenance fees, community events, resident demographics, and society rules.
+    steps:
+      - action: action_fetch_property_details
+
+  show_property_cultural_details_flow:
+    description: |
+      Retrieves and presents detailed information about the cultural aspects surrounding a specific property.
+      Focuses on local cultural events, festivals, museums, theaters, and community diversity.
+    steps:
+      - action: action_fetch_property_details
+
+  show_property_amenities_details_flow:
+    description: |
+      Retrieves and presents information about the amenities available at a specific property.
+      Focuses on both in-unit and building/society amenities.
+    steps:
+      - action: action_fetch_property_details
+
+  show_property_transport_details_flow:
+    description: |
+      Retrieves and presents information about transportation options near a specific property.
+      Focuses on public transport, road access, and parking availability.
+    steps:
+      - action: action_fetch_property_details
+
+  show_property_school_details_flow:
+    description: |
+      Retrieves and presents information about schools near a specific property.
+      Focuses on school ratings, distances, and types (public/private).
+    steps:
+      - action: action_fetch_property_details
+
+  show_property_safety_details_flow:
+    description: |
+      Retrieves and presents safety-related information about the neighborhood of a specific property.
+      Focuses on crime statistics, safety ratings, and emergency services availability.
+    steps:
+      - action: action_fetch_property_details
+
+  show_property_commercial_details_flow:
+    description: |
+      Retrieves and presents information about commercial areas near a specific property.
+      Focuses on shopping centers, restaurants, and essential services.
+    steps:
+      - action: action_fetch_property_details
+
+  property_comparison_flow:
+    description: | 
+      Facilitates the comparison of multiple properties based on user-specified criteria.
+      Allows users to analyze and evaluate properties side-by-side, highlighting key differences and similarities.
+    steps:
+      - action: action_compare_properties
+
+  property_buy_flow:
+    description: Initiates property purchase conversation. collects criteria, and flow conversation to show search results
+    persisted_slots:
+      - property_purpose
+      - bedroom_num
+      - bathroom_num
+      - area_min
+      - area_max
+      - amenities
+      - budget_min
+      - budget_max
+      - location
+    steps:
+      - collect: bedroom_num
+        description: "Collects the desired number of bedrooms for the property."
+      - collect: bathroom_num
+        description: "Collects the desired number of bathrooms for the property."
+      - collect: area_min
+        description: "Collects the minimum desired area for the property."
+      - collect: area_max
+        description: "Collects the maximum desired area for the property."
+      - collect: amenities
+        description: "Collects the preferred amenities for the property."
+      - collect: location
+        description: "Collects the location where the user wants to buy a property to live in."
+      - collect: budget_min
+        description: "Collects the minimum budget the user has for buying a property to live in."
+      - collect: budget_max
+        description: "Collects the maximum budget the user has for buying a property to live in."
+      - set_slots:
+          - property_purpose: "buy"
+      - call: show_property_results_flow
+
+  property_rent_flow:
+    description: Begins rental property conversation, collects criteria, and flow conversation to show search results.
+    persisted_slots:
+      - property_purpose
+      - bedroom_num
+      - bathroom_num
+      - area_min
+      - area_max
+      - amenities
+      - budget_min
+      - budget_max
+      - location
+      - rental_duration
+      - furnishing_preference
+      - move_in_date
+    steps:
+      - collect: bedroom_num
+        description: "Collects the desired number of bedrooms for the rental property."
+      - collect: bathroom_num
+        description: "Collects the desired number of bathrooms for the rental property."
+      - collect: area_min
+        description: "Collects the minimum desired area for the rental property."
+      - collect: area_max
+        description: "Collects the maximum desired area for the rental property."
+      - collect: amenities
+        description: "Collects the preferred amenities for the rental property."
+      - collect: budget_min
+        description: "Collects the minimum budget the user has for renting a property."
+      - collect: budget_max
+        description: "Collects the maximum budget the user has for renting a property."
+      - collect: location
+        description: "Collects the location where the user wants to rent a property."
+      - collect: rental_duration
+        description: "Collects the desired duration for the rental (e.g., '6 months', '1 year')."
+      - collect: furnishing_preference
+        description: "Collects the user's preference for furnishing (e.g., 'furnished', 'unfurnished')."
+      - collect: move_in_date
+        description: "Collects the desired move-in date for the rental property."
+      - set_slots:
+          - property_purpose: "rent"
+      - call: show_property_results_flow
+
+  show_saved_properties_flow:
+    description: Displays the list of properties that the user has saved.
+    steps:
+      - action: action_show_saved_properties
+
+
+
+  reset_flow:
+    description: Resets the current property search, clearing all filters and preferences.
+    steps:
+      - action: action_restart
+      - action: utter_search_reset
+
+  Visit_scheduling_flow:
+    description: |
+      This flow handles the process of scheduling a property viewing for a user.
+      It guides the user through providing necessary information, confirming the appointment, and then proceeding to the next steps.
+      The flow ensures a smooth scheduling experience by collecting property details, date, time, and confirmation from the user.
+    steps:
+      - collect: property_id
+        utter: utter_ask_property_details
+      - collect: schedule_viewing_date
+        utter: utter_ask_schedule_viewing_date
+        description: Collects the desired date for the property viewing.
+      - collect: schedule_viewing_time
+        utter: utter_ask_schedule_viewing_time
+        description: Collects the desired time for the property viewing.
+      - action: action_schedule_viewing
+      - action: utter_confirm_scheduling
+
+
+  check_scheduled_visits_flow:
+    description: |
+      This flow allows users to check their currently scheduled property visits.
+      It retrieves all active scheduled visits for the current user and presents them in a formatted list.
+    steps:
+      - action: action_check_scheduled_visits
+        next: END
+
+  reschedule_visit_flow:
+    description: |
+      This flow handles the process of rescheduling a previously scheduled property visit.
+      It prompts the user for the visit ID, new date, and new time, then updates the appointment in the database.
+    steps:
+      - collect: visit_id
+        utter: utter_ask_visit_id
+        description: Collects the ID of the visit to be rescheduled.
+        next:
+          - if: "slots.visit_id is null"
+            then:
+              - action: utter_invalid_visit_id
+                next: END
+          - else:
+              - collect: new_schedule_date
+                utter: utter_ask_new_schedule_date
+                description: Collects the new desired date for the property viewing.
+                next: collect_new_time
+      - id: collect_new_time
+        collect: new_schedule_time
+        utter: utter_ask_new_schedule_time
+        description: Collects the new desired time for the property viewing.
+        next: action_reschedule
+      - id: action_reschedule
+        action: action_reschedule_visit
+        next: confirm_rescheduling
+      - id: confirm_rescheduling
+        action: utter_confirm_rescheduling
+        next: END
+
+  cancel_visit_flow:
+    description: |
+      This flow handles the process of cancelling a previously scheduled property visit.
+      It prompts the user for the visit ID, then marks the appointment as cancelled in the database.
+    steps:
+      - collect: visit_id
+        utter: utter_ask_visit_id_for_cancellation
+        description: Collects the ID of the visit to be cancelled.
+        next:
+          - if: "slots.visit_id is null"
+            then:
+              - action: utter_invalid_visit_id
+                next: END
+          - else:
+              - action: action_cancel_visit
+                next: confirm_cancellation
+      - id: confirm_cancellation
+        action: utter_confirm_cancellation
+        next: END
