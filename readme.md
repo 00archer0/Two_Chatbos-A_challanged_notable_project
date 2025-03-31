@@ -1,127 +1,143 @@
-# Two Chatbots with Calm: An AI-Powered Real Estate Solution
+## Two Chatbots with Calm: An AI-Powered Real Estate Chatbot
 
-## Vision: Revolutionizing Property Search with Conversational AI
+---
 
-Imagine finding your dream home or the perfect rental with the ease of a casual conversation. Our project introduces a cutting-edge AI-powered chatbot system, built with Rasa, that transforms the complex process of property search into an intuitive and personalized experience. This solution doesn't just list properties; it understands your needs, answers your questions, and guides you every step of the way.
+### **Vision: Revolutionizing Property Search with Conversational AI**
 
-## The Problem: Navigating the Real Estate Maze
+Imagine finding your dream home or the perfect rental with the ease of a casual conversation. Our project introduces a cutting-edge AI-powered chatbot, built with Rasa, that transforms the complex process of property search into an intuitive and personalized experience. This chatbot doesn't just list properties; it understands your needs, answers your questions, and guides you every step of the way.
+
+### **The Problem: Navigating the Real Estate Maze**
 
 Finding the right property can be overwhelming. Users face:
 
-* **Information overload:** Sifting through endless listings and details
-* **Time constraints:** Scheduling viewings and gathering information is time-consuming
-* **Lack of personalization:** Generic search filters often miss unique preferences
-* **Communication gaps:** Traditional communication methods can be slow and inefficient
+- **Information overload:** Sifting through endless listings and details.
+- **Time constraints:** Scheduling viewings and gathering information is time-consuming.
+- **Lack of personalization:** Generic search filters often miss unique preferences.
+- **Communication gaps:** Traditional communication methods can be slow and inefficient.
 
-## Our Solution: A Dual Chatbot System with Evolutionary Approach
+### **Our Solution: An Intelligent Conversational Partner**
 
-Our solution consists of two integrated chatbots that work together to provide a seamless experience, solving the complex problems of property search and scheduling:
+#### **Evolution and Problem-Solving**
 
-### Chatbot One: Property Search Assistant
+Two chatbots are connected to provide a seamless and comprehensive real estate experience. The first chatbot focuses on property search and user interaction, while the second chatbot handles dealer visit scheduling. This dual-chatbot system ensures that users receive personalized property recommendations and can efficiently schedule visits with dealers.
 
-This chatbot is designed to assist users in finding their ideal property through a conversational interface:
+#### `Chatbot One`: Property Search Assistant
 
-* **Welcome and Initial Inquiry:**
-  * Greets users and determines their intent (buy or rent)
-  * Initiates the property search conversation
+This chatbot is designed to assist users in finding their ideal property through a conversational interface.
 
-* **Dynamic Search and Filtering:**
-  * Collects detailed user preferences (bedrooms, bathrooms, area, budget, amenities, location)
-  * Dynamically queries a database to retrieve relevant property listings
-  * Displays search results based on user-provided criteria
+- **Welcome and Initial Inquiry:**
+  - Greets users and determines their intent (buy or rent).
+  - Initiates the property search conversation.
 
-* **Detailed Property Information:**
-  * Provides comprehensive details about specific properties
-  * Presents information on neighborhoods, localities, societies, cultural aspects
-  * Offers details about amenities, transportation, schools, safety, and commercial facilities
+- **Dynamic Search and Filtering:**
+  - Collects detailed user preferences (bedrooms, bathrooms, area, budget, amenities, location).
+  - Dynamically queries a database to retrieve relevant property listings.
+  - `show_property_results_flow`: Displays search results based on user-provided criteria.
 
-* **Property Comparison:**
-  * Enables side-by-side comparison of properties
+- **Detailed Property Information:**
+  - `show_property_details_flow`: Provides comprehensive details about a specific property.
+  - `show_property_neighborhood_details_flow`: Presents neighborhood information.
+  - `show_property_locality_details_flow`: Presents locality information.
+  - `show_property_society_details_flow`: Presents society information.
+  - `show_property_cultural_details_flow`: Presents cultural information.
+  - `show_property_amenities_details_flow`: Presents amenities information.
+  - `show_property_transport_details_flow`: Presents transportation information.
+  - `show_property_school_details_flow`: Presents school information.
+  - `show_property_safety_details_flow`: Presents safety information.
+  - `show_property_commercial_details_flow`: Presents commercial information.
 
-* **Buy and Rent Specific Flows:**
-  * Tailored conversation paths for property purchase
-  * Specialized dialogue for rental properties
+- **Property Comparison:**
+  - `property_comparison_flow`: Enables side-by-side comparison of properties.
 
-* **Scheduling and Management:**
-  * Schedules property viewings
-  * Manages scheduled visits
-  * Handles rescheduling and cancellations
+- **Buy and Rent Specific Flows:**
+  - `property_buy_flow`: Tailored conversation for property purchase.
+  - `property_rent_flow`: Tailored conversation for rental properties.
 
-* **User Management:**
-  * Tracks and displays saved properties
+- **Scheduling and Management:**
+  - `Visit_scheduling_flow`: Schedules property viewings.
+  - `check_scheduled_visits_flow`: Checks scheduled visits.
+  - `reschedule_visit_flow`: Reschedules visits.
+  - `cancel_visit_flow`: Cancels visits.
 
-* **Search Reset:**
-  * Clears all search filters when needed
+- **User Management:**
+  - `show_saved_properties_flow`: Displays saved properties.
 
-### Chatbot Two: Dealer Visit Scheduler
+- **Search Reset:**
+  - `reset_flow`: Clears all search filters.
 
-This chatbot streamlines the process of scheduling client visits with dealers:
+#### `Chatbot Two`: Dealer Visit Scheduler
 
-#### Call Flows
-* **Greeting Flow:**
-  * Greets the dealer and confirms their identity
-  * Transitions to explanation or alternate contact collection based on confirmation
+This chatbot is designed to streamline the process of scheduling client visits with dealers.
 
-* **Explanation Flow:**
-  * Explains the purpose of the conversation (scheduling visits)
-  * Collects visit date, time, and alternate contact information
-  * Confirms the schedule before ending the conversation
+##### Call Flows
 
-* **Alternate Contact Flow:**
-  * Collects alternate contact information for the dealer
+- **`greeting_flow`**:
+  - Greets the dealer and confirms their identity.
+  - Transitions to `explain_flow` if identity is confirmed, or `alternate_contact_flow` if not.
 
-* **Goodbye Flow:**
-  * Ends the conversation appropriately
+- **`explain_flow`**:
+  - Explains the purpose of the conversation (scheduling visits).
+  - Collects visit date, time, and alternate contact information.
+  - Confirms the schedule and transitions to `goodbye`.
 
-#### Rasa's Calm System Patterns
+- **`goodbye`**:
+  - Ends the conversation with a farewell message.
 
-* **List Skills:**
-  * Provides information about the chatbot's capabilities
+- **`alternate_contact_flow`**:
+  - Collects alternate contact information for the dealer.
 
-* **Pattern Cannot Handle:**
-  * Manages user inputs that the chatbot doesn't understand
+##### Rasa's Calm System Patterns
 
-* **Pattern Search:**
-  * Handles frequently asked questions
+- **`list_skills`**:
+  - Provides information about the chatbot's capabilities.
 
-* **Out of Scope:**
-  * Handles off-topic user requests without disrupting the main flow
+- **`pattern_cannot_handle`**:
+  - Handles user inputs that the chatbot doesn't understand.
 
-* **Pattern Chitchat:**
-  * Manages casual conversation without derailing the primary task
+- **`pattern_search`**:
+  - Handles FAQ.
 
-## Custom Rasa UI
+- **`out_of_scope`**:
+  - Handles off-topic user requests that won't disrupt the main flow.
 
-Our solution features a custom Rasa UI specifically designed for real estate, including:
+- **`pattern_chitchat`**:
+  - Handles off-topic conversation that won't disrupt the main flow.
 
-* Intuitive conversational interface for property search
-* Property cards with visual representation and key details
-* Session management that preserves conversation history
-* Advanced filtering capabilities
-* Ability to save favorite properties
+### **Call to Action: Let's Build the Future of Real Estate**
 
-## Technology Stack
+Demonstrates the power of conversational AI in transforming the real estate industry. I'm excited to collaborate and bring this innovative solution to the Rasa challenge.
 
-* Rasa framework with Calm architecture
-* Retrieval Augmented Generation (RAG)
-* FAISS vector database
-* SQLite for relational data storage
-* HTML, CSS, JavaScript for frontend
-* Flask API for backend services
-* GitHub Codespaces and Docker for development and deployment
+### **Rasa Challenge Alignment**
 
-## Rasa Challenge Alignment
+| Feature/Question                                                                 | Answer |
+| :------------------------------------------------------------------------------- | :----- |
+| **Uniqueness & Problem-Solving**                                                | ✅     |
+| **Handles Complex Conversations (context switch, corrections, interruptions)**  | ✅     |
+| **Combines RAG and Transactional Flows Effectively**                            | ✅     |
+| **Integrations with Sophisticated Backend Systems**                             | ✅     |
+| **Uses Open-Source LLMs**                                                       | ✅ (Optional) |
+| **Uses Fine-Tuned Models**                                                      | ✅ (Optional) |
+| **Integrations with Other AI Tools**                                            | ✅     |
 
-| Feature/Question | Answer |
-| :--------------- | :----- |
-| **Uniqueness & Problem-Solving** | ✅ |
-| **Handles Complex Conversations** | ✅ |
-| **Combines RAG and Transactional Flows** | ✅ |
-| **Integrations with Backend Systems** | ✅ |
-| **Uses Open-Source LLMs** | ✅ (Optional) |
-| **Uses Fine-Tuned Models** | ✅ (Optional) |
-| **Integrations with Other AI Tools** | ✅ |
+## **Custom Rasa UI**
 
-## Call to Action: Let's Build the Future of Real Estate
+The custom Rasa UI for real estate focuses on the following compelling features:
 
-This proposal demonstrates the power of conversational AI in transforming the real estate industry. We're excited to collaborate and bring this innovative solution to the Rasa challenge.
+- Conversational interface for property search.
+- Property cards with visual representation and key details.
+- Session management that preserves conversation history.
+- Advanced filtering capabilities.
+- The ability to save favorite properties.
+
+### **Technology Used**
+
+- Rasa framework (Calm, RAG)
+- Faiss vector database
+- SQLite SQL database
+- HTML, CSS, JS for front end
+- Flask API
+- GitHub Codespace, Docker
+
+---
+
+This formatted document provides a clear and structured overview of the AI-powered real estate chatbot project, highlighting its vision, problem-solving approach, features, and technology stack.
