@@ -26,10 +26,10 @@ flows:
     - visit_time  
     steps:
       - action: utter_explain_purpose
-      - collect: visit_time
-        description: The time when the dealer wants to client to visit
       - collect: visit_date
         description: The date when the dealer wants to client to visit
+      - collect: visit_time
+        description: The time when the dealer wants to client to visit 
       - collect: dealer_alternate_contact
         description: "Phone number or email for updates"
       - action: utter_confirm_schedule

@@ -12,7 +12,7 @@ from pathlib import Path
 import pandas as pd
 
 # Define the SQLite database path
-db_path = "/Users/lalit/Desktop/rasa_env/rasa.db"
+db_path = "/workspaces/Rasa_challenge/rasa.db"
 
 
 def GetDataFromDB(query):
@@ -37,8 +37,6 @@ class ActionSetInitialSlots(Action):
         # Get property details from database
         try:
             # In a real scenario, you would use the actual property ID selected by the master
-            
-            
             
             property_id = "PROP-1234"  # Example property ID
             query = f"SELECT * FROM prop_data WHERE PROP_ID = '{property_id}' LIMIT 1"

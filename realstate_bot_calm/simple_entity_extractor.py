@@ -62,7 +62,7 @@ class GeminiEntityExtractor(GraphComponent, EntityExtractorMixin):
             # gemma-3-27b-it
             "api_key": os.environ.get("GEMINI_API_KEY"),
             "timeout": 10,
-            "db_path": "/Users/lalit/Desktop/rasa_env/rasa.db",  # Added db_path to config
+            "db_path": "/workspaces/Rasa_challenge/rasa.db",  # Added db_path to config
         }
 
     def __init__(self, config: Dict[Text, Any]) -> None:
@@ -142,8 +142,8 @@ class GeminiEntityExtractor(GraphComponent, EntityExtractorMixin):
                         {"type": "BUDGET", "options": {"MIN_PRICE": 0, "MAX_PRICE": 99999999}, "desc": "Price range (e.g., ₹50L – ₹2Cr)"},
                         {"type": "AREA_SQFT", "options": {"MIN_AREA_SQFT": 0, "MAX_AREA_SQFT": 4000}, "desc": "Size of property in sq. ft. (e.g., 1000 – 2000 sq. ft.)"},
                         {"type": "TRANSACT_TYPE", "options": [1, 2], "desc": "Transaction type (1 = Sale, 2 = Rent)"},
+                        {"type": "CITY", "options": ["Secunderabad", "Hyderabad", "Kolkata South", "Kolkata North", "Kolkata Central", "Kolkata East", "Kolkata West", "Mumbai Beyond Thane", "Navi Mumbai", "Thane", "Mumbai Harbour", "South Mumbai", "Central Mumbai suburbs", "Mumbai South West", "Mumbai Andheri-Dahisar", "Mira Road And Beyond", "Gurgaon"], "desc": "List of Locations"},
                         {"type": "AMENITIES", "options": ["Swimming Pool", "Power Back-up", "Club house / Community Center", "Feng Shui / Vaastu Compliant", "Park", "Private Garden / Terrace", "Security Personnel", "Centrally Air Conditioned", "ATM", "Fitness Centre / GYM", "Cafeteria / Food Court", "Bar / Lounge", "Conference room", "Security / Fire Alarm", "Visitor Parking", "Intercom Facility", "Lift(s)", "Service / Goods Lift", "Maintenance Staff", "Water Storage", "Waste Disposal", "Rain Water Harvesting", "Access to High Speed Internet", "Bank Attached Property", "Piped-gas", "Water purifier", "Shopping Centre", "WheelChair Accessibility", "DG Availability", "CCTV Surveillance", "Grade A Building", "Grocery Shop", "Near Bank"], "desc": "Available facilities (e.g., Gym, Pool, Lift)"},
-                        {"type": "AGE", "options": ["1-5 Year Old Property", "5-10 Year Old Property", "10+ Year Old Property", "Under Construction", "0-1 Year Old Property"], "desc": "Age of property (e.g., 1-5 years, New)"}
                     ]
 
         valid_filter_types = {f["type"] for f in filter_data}
@@ -224,7 +224,9 @@ class GeminiEntityExtractor(GraphComponent, EntityExtractorMixin):
                     - "type": exact filter type from schema - key
                     - "value": filter that matches the keyword in message (flat, 2 BHK, Ac rooms) - list of options for a filters
                     - You can insert multiple values in the list for the filter if user have mentioned multiple options for a filter
-
+                    
+                    # **you must not explain the issue with data, just return blank json if don't find any value or you are certain about**
+                    
                     Example response for "3BHK flats under 50L but no studios":
                     This format will be returned:
                     {{
@@ -328,7 +330,7 @@ class GeminiEntityExtractor(GraphComponent, EntityExtractorMixin):
 
                 # message.set(ENTITIES, message.get(ENTITIES, []) + entities, add_to_output=True)
 
-                print("RESPONSE:0", saved_final_text_filters)
+                print("RESPONSE:0", sender_id, saved_final_text_filters)
                 print("RESPONSE:1", response_json)
                 print("RESPONSE:1 response", updated_final_text_filters)
                 print("RESPONSE:3", data_json)

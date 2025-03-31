@@ -19,17 +19,11 @@ export const filterData = {
         type: "chips",
         multiSelect: true,
         options: [
-            { name: "1 RK", enabled: false },
             { name: "1 BHK", enabled: false },
             { name: "2 BHK", enabled: false },
             { name: "3 BHK", enabled: false },
             { name: "4 BHK", enabled: false },
-            { name: "5 BHK", enabled: false },
-            { name: "6 BHK", enabled: false },
-            { name: "7 BHK", enabled: false },
-            { name: "8 BHK", enabled: false },
-            { name: "9 BHK", enabled: false },
-            { name: "9+ BHK", enabled: false }
+            { name: "5 BHK", enabled: false }
         ]
     },
     BATHROOM_NUM: {
@@ -40,19 +34,18 @@ export const filterData = {
             { name: "1+", enabled: false },
             { name: "2+", enabled: false },
             { name: "3+", enabled: false },
-            { name: "4+", enabled: false },
-            { name: "5+", enabled: false }
-        ]
+            { name: "4+", enabled: false }
+         ]
     },
     BUDGET: {
         title: "Budget",
-        type: "dualRange",
+        type: "range",
         options: {
             min: 0,
             max: 9999999,
-            step: 10000,
+            step: 1000,
             currentMin: 0,
-            currentMax: 9999999,
+            currentMax: 999999,
             labels: ["Min Budget", "Max Budget"]
         }
     },
@@ -64,7 +57,7 @@ export const filterData = {
             max: 4000,
             step: 100,
             currentMin: 0,
-            currentMax: 4000,
+            currentMax: 2000,
             labels: ["sq.ft.", "sq.ft."]
         }
     },
@@ -89,7 +82,6 @@ export const filterData = {
             { name: "Park", enabled: false },
             { name: "Private Garden / Terrace", enabled: false },
             { name: "Security Personnel", enabled: false },
-            { name: "Centrally Air Conditioned", enabled: false },
             { name: "ATM", enabled: false },
             { name: "Fitness Centre / GYM", enabled: false },
             { name: "Cafeteria / Food Court", enabled: false },
@@ -97,36 +89,14 @@ export const filterData = {
             { name: "Conference room", enabled: false },
             { name: "Security / Fire Alarm", enabled: false },
             { name: "Visitor Parking", enabled: false },
-            { name: "Intercom Facility", enabled: false },
             { name: "Lift(s)", enabled: false },
             { name: "Service / Goods Lift", enabled: false },
             { name: "Maintenance Staff", enabled: false },
-            { name: "Water Storage", enabled: false },
-            { name: "Waste Disposal", enabled: false },
-            { name: "Rain Water Harvesting", enabled: false },
-            { name: "Access to High Speed Internet", enabled: false },
-            { name: "Bank Attached Property", enabled: false },
-            { name: "Piped-gas", enabled: false },
-            { name: "Water purifier", enabled: false },
-            { name: "Shopping Centre", enabled: false },
             { name: "WheelChair Accessibility", enabled: false },
             { name: "DG Availability", enabled: false },
             { name: "CCTV Surveillance", enabled: false },
-            { name: "Grade A Building", enabled: false },
             { name: "Grocery Shop", enabled: false },
             { name: "Near Bank", enabled: false }
-        ]
-    },
-    AGE: {
-        title: "Age of Property",
-        type: "chips",
-        multiSelect: true,
-        options: [
-            { name: "1-5 Year Old Property", enabled: false },
-            { name: "5-10 Year Old Property", enabled: false },
-            { name: "10+ Year Old Property", enabled: false },
-            { name: "Under Construction", enabled: false },
-            { name: "0-1 Year Old Property", enabled: false }
         ]
     }
 };

@@ -7,3 +7,8 @@ jupyter
 flask
 pandas
 google.generativeai
+requests
+uvicorn
+fastapi
+pydantic
+flask_cors

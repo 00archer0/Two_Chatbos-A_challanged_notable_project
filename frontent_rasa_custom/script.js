@@ -3,7 +3,9 @@ import { filterData } from './filters_data.js';
 import { loadFiltersFromStorage, renderFilters, loadUserFilters, updateAppliedFilters, createAppliedFilterChip, getAppliedFilters, applyBotFilters } from './filter_script.js';
 
 // API Configuration
-const API_BASE = 'http://localhost:3333';
+// const API_BASE = 'http://localhost:3333';
+const API_BASE = "https://shiny-broccoli-4qprqv5479xfq679-5055.app.github.dev"
+const RASA_API = "https://shiny-broccoli-4qprqv5479xfq679-5006.app.github.dev/webhooks/rest/webhook"
 
 // Global variables
 let currentSessionId = sessionStorage.getItem('currentSessionId') || null;
@@ -47,6 +49,7 @@ async function fetchSessions() {
 
     try {
         const response = await fetch(`${API_BASE}/api/rasa-session`);
+        
         const data = await response.json();
         cachedSessions = data.map(session => ({
             id: session.sender_id,
@@ -98,8 +101,15 @@ window.addEventListener('filtersCleared', (e) => {
 
 // Transform API event to chat message format
 function transformApiEventToMessage(event) {
+    const isUnixSeconds = typeof event.timestamp === 'number' && event.timestamp < 9999999999;
+    const timestamp = isUnixSeconds ? event.timestamp * 1000 : event.timestamp;
+
     const baseMessage = {
-        time: new Date(event.timestamp * 1000).toLocaleTimeString(),
+        time: new Date(timestamp).toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true // Shows AM/PM
+        }),
     };
 
     if (event.event === 'user') {
@@ -219,12 +229,17 @@ async function loadSavedSession(sessionId) {
                             opt.enabled = savedFilter.value.includes(opt.name);
                         });
                     } else if (section.type === "range" || section.type === "dualRange") {
-                        // Handle range values if needed (example)
-                        if (savedFilter.value.min !== undefined) {
-                            section.options.currentMin = savedFilter.value.min;
-                        }
-                        if (savedFilter.value.max !== undefined) {
-                            section.options.currentMax = savedFilter.value.max;
+                        // Handle range filter values from saved filters
+                        if (savedFilter.value && typeof savedFilter.value === 'object') {
+                            // Only update currentMin if min value exists in saved filter
+                            if (savedFilter.value.min !== undefined) {
+                                section.options.currentMin = savedFilter.value.min;
+                            }
+                            
+                            // Only update currentMax if max value exists in saved filter
+                            if (savedFilter.value.max !== undefined) {
+                                section.options.currentMax = savedFilter.value.max;
+                            }
                         }
                     }
                 }
@@ -408,13 +423,13 @@ function displayMessage(message) {
     `;
 
     // Add response time for bot messages
-    if (message.sender === 'bot' && message.responseTime) {
-        messageContent += `
-            <div class="response-time">
-                Response time: ${message.responseTime.toFixed(1)}s
-            </div>
-        `;
-    }
+    // if (message.sender === 'bot' && message.responseTime) {
+    //     messageContent += `
+    //         <div class="response-time">
+    //             Response time: ${message.responseTime.toFixed(1)}s
+    //         </div>
+    //     `;
+    // }
 
     // Add property carousel if available
     if (message.properties && message.properties.length > 0) {
@@ -622,7 +637,7 @@ async function sendMessage() {
 
     try {
         showTypingIndicator();
-        const response = await fetch('http://localhost:5005/webhooks/rest/webhook', {
+        const response = await fetch(RASA_API, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -812,7 +827,7 @@ function handleManualFilterApplied(e) {
         }
 
         // Send the filter text to Rasa
-        const filterText = e.detail.replace("I've selected these filters: ", "");
+        const filterText = e.detail.replace("I want to search property with filters: ", "");
         simulateNaturalLanguageFilter(filterText);
     }
 }
@@ -824,7 +839,7 @@ async function simulateNaturalLanguageFilter(filterText) {
     showTypingIndicator();
 
     try {
-        const response = await fetch('http://localhost:5005/webhooks/rest/webhook', {
+        const response = await fetch(RASA_API, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -832,7 +847,7 @@ async function simulateNaturalLanguageFilter(filterText) {
                 message: filterText,
                 stream: true,
                 input_channel: "webchat",
-                metadata: {}
+                metadata: {sender: currentSessionId}
             })
         });
 

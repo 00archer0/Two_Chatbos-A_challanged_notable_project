@@ -4,6 +4,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, Restarted
 import os
 from twilio.rest import Client
+import traceback
 
 import re
 import google.generativeai as genai
@@ -16,7 +17,7 @@ import sqlite3
 from pathlib import Path
 import pandas as pd
 # Define the SQLite database path
-db_path = "/Users/lalit/Desktop/rasa_env/rasa.db"
+db_path = "/workspaces/Rasa_challenge/rasa.db"
 
 # Twilio Credentials from Environment Variables
 TWILIO_ACCOUNT_SID = os.environ.get("TWILIO_ACCOUNT_SID")
@@ -28,39 +29,65 @@ TWILIO_URL = os.environ.get("TWILIO_URL")
 # Existing actions (modified for naming consistency)
 # -------------------------------------------------
 
+import logging
+import math
+
+import math
+import logging
+
 def format_properties(data):
     properties = []
     for i, item in enumerate(data, start=101):
-        formatted = {
-            "id": item.get("PROP_ID"),
-            "title": item.get("PROP_HEADING"),
-            "price": item.get("PRICE"),
-            "address": item.get("LOCALITY"),
-            "type": item.get("PROPERTY_TYPE"),
-            "image": item.get("PHOTO_URL"),
-            "bedrooms": int(item.get("BEDROOM_NUM", 0)),
-            "bathrooms": int(item.get("BATHROOM_NUM", 0)),
-            "area": f"{int(item.get('BUILTUP_SQFT', 0))} sq ft",
-            "yearBuilt": None,  # No year info available in input
-            "description": f"{item.get('PROP_HEADING')} located in {item.get('LOCALITY')} with {item.get('BEDROOM_NUM')} bedrooms and {item.get('BATHROOM_NUM')} bathrooms.",
-            "amenities": [
-                "Parking", "Security", "Balcony"
-            ],
-            "images": [
-                item.get("PHOTO_URL"),
-                item.get("PHOTO_URL")  # Repeated since no additional images are available
-            ],
-            "agent": {
-                "name": "Jessica Parker",
-                "title": "Senior Real Estate Agent",
-                "phone": "(555) 123-4567",
-                "email": "jessica@realestate.com",
-                "avatar": "/api/placeholder/60/60"
+        try:
+            # Safer handling of NaN and None values
+            bedroom_val = item.get("BEDROOM_NUM", 0)
+            bedrooms = int(bedroom_val) if bedroom_val is not None and not (isinstance(bedroom_val, float) and math.isnan(bedroom_val)) else 0
+            
+            bathroom_val = item.get("BATHROOM_NUM", 0)
+            bathrooms = int(bathroom_val) if bathroom_val is not None and not (isinstance(bathroom_val, float) and math.isnan(bathroom_val)) else 0
+            
+            area_val = item.get("BUILTUP_SQFT", 0)
+            area = f"{int(area_val)} sq ft" if area_val is not None and not (isinstance(area_val, float) and math.isnan(area_val)) else "Area not specified"
+            
+            # Get locality with fallback
+            locality = item.get("LOCALITY")
+            location_text = locality if locality else "an unspecified location"
+            
+            formatted = {
+                "id": item.get("PROP_ID", f"unknown-{i}"),
+                "title": item.get("PROP_HEADING", "Unnamed Property"),
+                "price": item.get("PRICE", "Price not specified"),
+                "address": item.get("CITY") or "Location not specified",
+                "type": item.get("PROPERTY_TYPE", "Not specified"),
+                "image": item.get("PHOTO_URL") or "/default-image.jpg",
+                "bedrooms": bedrooms,
+                "bathrooms": bathrooms,
+                "area": area,
+                "yearBuilt": None,  
+                "description": f"{item.get('PROP_HEADING', 'Property')} located in {location_text} with {bedrooms} bedrooms and {bathrooms} bathrooms.",
+                "amenities": [
+                    "Parking", "Security", "Balcony"
+                ],
+                "images": [
+                    item.get("PHOTO_URL") or "/default-image.jpg", 
+                    item.get("PHOTO_URL") or "/default-image.jpg"
+                ],
+                "agent": {
+                    "name": "Jessica Parker",
+                    "title": "Senior Real Estate Agent",
+                    "phone": "(555) 123-4567",
+                    "email": "jessica@realestate.com",
+                    "avatar": "/api/placeholder/60/60"
+                }
             }
-        }
-        properties.append(formatted)
-
+            properties.append(formatted)
+        except Exception as e:
+            logging.error(f"Error processing property {item.get('PROP_ID', 'unknown')}: {str(e)}")
+            # Still continue to next item
+    
     return {"properties": properties}
+
+
 
 def GetDataFromDB(query):
     
@@ -201,8 +228,6 @@ def GetPropertyData(filters):
     for filter_item in filters:
         
         col_type = filter_item['type']
-        if col_type == "LOCATION":
-            continue
         values = filter_item.get('value', [])
         if not values:
             continue
@@ -253,7 +278,7 @@ def GetPropertyData(filters):
     if not where_clause:
         return ""
     
-    return f"SELECT PRICE, PHOTO_URL, PROP_HEADING, BEDROOM_NUM, BATHROOM_NUM, PROPERTY_TYPE, LOCALITY, BUILTUP_SQFT, PROP_ID FROM prop_data WHERE {where_clause} LIMIT 5;"
+    return f"SELECT PRICE, PHOTO_URL, PROP_HEADING, BEDROOM_NUM, BATHROOM_NUM, PROPERTY_TYPE, CITY, BUILTUP_SQFT, PROP_ID FROM prop_data WHERE {where_clause} LIMIT 5;"
 
 class ActionSearchProperties(Action):
     def name(self) -> Text:
@@ -268,22 +293,20 @@ class ActionSearchProperties(Action):
             query = GetPropertyData(filters)
             data = GetDataFromDB(query)
 
+            data = format_properties(data)
+
             if not data:
-                dispatcher.utter_message("I'm sorry, I couldn't find any properties matching your exact criteria. Would you like to try a broader search?")
+                dispatcher.utter_message("I'm sorry, I couldn't find any properties matching your exact criteria. Would you like to try a modifying search?")
+                dispatcher.utter_message("P.S., Currenty i support these few locations Secunderabad, Hyderabad, Kolkata, Navi Mumbai, Thane, Mumbai, Gurgaon?")
                 return []
 
-            result = format_properties(data)
-
-            if not result:
-                dispatcher.utter_message("I encountered an error formatting the search results.")
-                return []
-
-            dispatcher.utter_message("Here are your search results:", json_message=result)
+            dispatcher.utter_message("Here are your search results:", json_message=data)
             return []
 
         except Exception as e:
-            print(f"Error in ActionSearchProperties: {e}")  # Log the error
-            dispatcher.utter_message("An error occurred while searching for properties. Please try again later.")
+            error_details = traceback.format_exc()
+            logger.error(f"Error in ActionSearchProperties: {e}\n{error_details}")
+            dispatcher.utter_message("An error occurred while searching for properties. Please try again by rephrasing or modifying the filters.")
             return []
 
 class ActionFetchPropertyDetails(Action):
@@ -471,62 +494,49 @@ class ActionShowSavedProperties(Action):
             dispatcher.utter_message(f"Error retrieving saved properties: {str(e)}")
             return []
 
-# 
-
-# class ActionScheduleViewing(Action):
-#     def name(self) -> Text:
-#         return "action_schedule_viewing"
-
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-#         date = tracker.get_slot("schedule_viewing_date")
-#         time = tracker.get_slot("schedule_viewing_time")
-        
-#         if not date or not time:
-#             dispatcher.utter_message("Sorry, I need both date and time to schedule a viewing.")
-#             return []
-
-#         if not TWILIO_ACCOUNT_SID or not TWILIO_AUTH_TOKEN or not TWILIO_PHONE_NUMBER or not DESTINATION_PHONE_NUMBER:
-#             dispatcher.utter_message("Twilio credentials are not set in the environment variables.")
-#             return []
-
-#         try:
-#             # Twilio call initiation
-#             client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-#             call = client.calls.create(
-#                 from_=TWILIO_PHONE_NUMBER,
-#                 to=DESTINATION_PHONE_NUMBER,
-#                 url=TWILIO_URL, #ensure this ngrok url is active, and the webhooks are handled correctly.
-#             )
-#             print(f"Twilio Call SID: {call.sid}")
-
-#             dispatcher.utter_message(f"Scheduling viewing for {date} at {time} and initiating a call to confirm.")
-            
-#             # ReminderScheduled
-#             # ReminderCancelled
-            
-#         except Exception as e:
-#             print(f"Error initiating Twilio call: {e}")
-#             dispatcher.utter_message(f"Scheduling viewing for {date} at {time}, but there was an error initiating the call. Please check your Twilio credentials, ngrok setup, and environment variables.")
-            
-#         return []
-
-class ActionSaveSchedulingDetails(Action):
+class ActionScheduleViewing(Action):
     def name(self) -> Text:
-        return "action_save_scheduling_details"
+        return "action_schedule_viewing"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        # Get slot values
+        # Get all slot values
         sender_id = tracker.sender_id
         property_id = tracker.get_slot("property_id")
         property_address = tracker.get_slot("property_address")
         visit_date = tracker.get_slot("schedule_viewing_date")
         visit_time = tracker.get_slot("schedule_viewing_time")
+        
+        # Check if required slots are filled
+        if not visit_date or not visit_time:
+            dispatcher.utter_message("Sorry, I need both date and time to schedule a viewing.")
+            return []
+        
+        call_status = "not initiated"
+        
+        # Try to initiate Twilio call if credentials are available
+        if TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN and TWILIO_PHONE_NUMBER and DESTINATION_PHONE_NUMBER:
+            try:
+                # Twilio call initiation
+                client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+                call = client.calls.create(
+                    from_=TWILIO_PHONE_NUMBER,
+                    to=DESTINATION_PHONE_NUMBER,
+                    url=TWILIO_URL, #ensure this ngrok url is active, and the webhooks are handled correctly.
+                )
+                print(f"Twilio Call SID: {call.sid}")
+                call_status = "call initiated"
+                dispatcher.utter_message(f"Scheduling viewing for {visit_date} at {visit_time} and initiating a call to confirm.")
+                
+            except Exception as e:
+                print(f"Error initiating Twilio call: {e}")
+                dispatcher.utter_message(f"Scheduling viewing for {visit_date} at {visit_time}, but there was an error initiating the call. Please check your Twilio credentials, ngrok setup, and environment variables.")
+                call_status = "error initiating call"
+        else:
+            dispatcher.utter_message("Twilio credentials are not set in the environment variables.")
+            call_status = "missing credentials"
         
         # Save scheduling details to database
         try:
@@ -543,6 +553,7 @@ class ActionSaveSchedulingDetails(Action):
                 property_address TEXT,
                 visit_date TEXT,
                 visit_time TEXT,
+                confirmation TEXT,
                 status TEXT DEFAULT 'active',
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )
@@ -552,11 +563,11 @@ class ActionSaveSchedulingDetails(Action):
             cursor.execute('''
             INSERT INTO scheduled_visits (
                 sender_id, property_id, property_address, 
-                visit_date, visit_time, status
-            ) VALUES (?, ?, ?, ?, ?, ?)
+                visit_date, visit_time, confirmation, status
+            ) VALUES (?, ?, ?, ?, ?, ?, ?)
             ''', (
                 sender_id, property_id, property_address,
-                visit_date, visit_time, 'active'
+                visit_date, visit_time, call_status, 'active'
             ))
             
             # Commit and close
@@ -564,7 +575,10 @@ class ActionSaveSchedulingDetails(Action):
             conn.close()
             
             logger.info(f"Successfully saved scheduling details for property {property_id}")
-            dispatcher.utter_message(f"Visit scheduled successfully for {visit_date} at {visit_time}.")
+            
+            # Only send this message if it wasn't already sent during Twilio call handling
+            if call_status != "call initiated":
+                dispatcher.utter_message(f"Visit scheduled successfully for {visit_date} at {visit_time}.")
             
         except Exception as e:
             logger.error(f"Error saving scheduling details to database: {str(e)}")

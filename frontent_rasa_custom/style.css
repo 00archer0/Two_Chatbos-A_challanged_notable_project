@@ -1264,29 +1264,6 @@ html {
     }
 }
 
-/* Add to style.css */
-/* Left Panel Session Styles */
-/* .left-panel {
-    width: 320px;
-    min-width: 320px;
-    display: flex;
-    flex-direction: column;
-    background: var(--secondary-color);
-}
-
-.panel-header {
-    padding: 1rem;
-    background: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    z-index: 1;
-}
-
-.panel-header h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin: 0;
-} */
 
 .new-session-btn {
     width: 100%;
@@ -1547,7 +1524,7 @@ html {
 
 .tab-content {
     display: none;
-    height: calc(100% - 60px);
+    /* height: calc(100% - 60px); */
     overflow-y: auto;
 }
 
@@ -1847,7 +1824,7 @@ html {
   .btn {
     border-radius: 6px;
     padding: 6px 14px;
-    font-size: 0.85rem;
+    font-size: 1rem;
     font-weight: 500;
   }
   
@@ -1880,18 +1857,7 @@ html {
   }
 
 
-  /* Base styles */
-.panel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #e9ecef;
-    padding: 12px 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    width: 100%; /* Full width */
-    box-sizing: border-box; /* Include padding in width calculation */
-  }
+
   
   /* Tab navigation */
   .nav-tabs {
@@ -2057,4 +2023,56 @@ html {
 
 .message-input-container.has-attachments .attached-properties {
     display: block;
+}
+
+/* Fix filter tab layout issues */
+#filtersTabContent {
+    position: relative;
+    /* height: calc(100vh - 120px); */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container for applied filters chips */
+.filter-chips-container {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+    padding: 10px 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Filters scroll area */
+.filter-scroll-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 16px;
+}
+
+/* Fixed buttons container */
+.filter-actions-footer {
+    position: sticky;
+    bottom: 0;
+    background: white;
+    padding: 16px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    z-index: 100;
+}
+
+/* Adjust tab content padding
+.tab-content#filtersTabContent {
+    padding-bottom: 80px; 
+} */
+
+/* Ensure tab header stays fixed */
+.panel-header {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 200;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }

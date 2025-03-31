@@ -63,14 +63,19 @@ export function updateAppliedFilters() {
                     appliedFiltersContainer.appendChild(chip);
                 }
             });
-        } else if ((section.type === 'dualRange' || section.type === 'range') &&
-            (section.options.currentMin !== section.options.min ||
-                section.options.currentMax !== section.options.max)) {
-            const label = key === 'budget' ?
-                `₹${section.options.currentMin.toLocaleString()} - ₹${section.options.currentMax.toLocaleString()}` :
-                `${section.options.currentMin.toLocaleString()} - ${section.options.currentMax.toLocaleString()} sq.ft.`;
-            const chip = createAppliedFilterChip(label, key, true);
-            appliedFiltersContainer.appendChild(chip);
+        } else if (section.type === 'dualRange' || section.type === 'range') {
+            // Create chip for BUDGET if values are different from default
+            if (key === 'BUDGET' && (section.options.currentMin !== section.options.min || section.options.currentMax !== section.options.max)) {
+                const label = `₹${section.options.currentMin.toLocaleString()} - ₹${section.options.currentMax.toLocaleString()}`;
+                const chip = createAppliedFilterChip(label, key, true);
+                appliedFiltersContainer.appendChild(chip);
+            } 
+            // Create chip for AREA_SQFT if values are different from default
+            else if (key === 'AREA_SQFT' && (section.options.currentMin !== section.options.min || section.options.currentMax !== section.options.max)) {
+                const label = `${section.options.currentMin.toLocaleString()} - ${section.options.currentMax.toLocaleString()} sq.ft.`;
+                const chip = createAppliedFilterChip(label, key, true);
+                appliedFiltersContainer.appendChild(chip);
+            }
         }
     }
 }
@@ -134,10 +139,16 @@ export function resetAllFilters() {
     // Existing reset logic
     for (const [key, section] of Object.entries(currentUserFilters)) {
         if (section.type === 'chips' || section.type === 'checkbox') {
-            section.options.forEach(option => option.enabled = false);
+            // Reset all checkbox/chip options by setting enabled to false
+            if (Array.isArray(section.options)) {
+                section.options.forEach(option => option.enabled = false);
+            }
         } else if (section.type === 'dualRange' || section.type === 'range') {
-            section.options.currentMin = section.options.min;
-            section.options.currentMax = section.options.max;
+            // Reset range filters to their min/max defaults
+            if (section.options && typeof section.options === 'object') {
+                section.options.currentMin = section.options.min;
+                section.options.currentMax = section.options.max;
+            }
         }
     }
 
@@ -317,10 +328,19 @@ function renderCheckboxFilters(sectionKey, options) {
  * @returns {string} The HTML string for the range slider.
  */
 function createRangeSlider(options, key) {
-    const isBudget = key === 'budget';
-    const formatValue = val => isBudget ?
-        `₹${val.toLocaleString()}` :
-        `${val.toLocaleString()} sq.ft.`;
+    // Make sure we're using strict equality comparison
+    const isBudget = key === 'BUDGET';
+    
+    // Debug check - you can remove this later
+    console.log('Creating slider for key:', key, 'isBudget:', isBudget);
+    
+    const formatValue = val => {
+        if (isBudget) {
+            return `₹${val.toLocaleString()}`;
+        } else {
+            return `${val.toLocaleString()} sq.ft.`;
+        }
+    };
 
     return `
         <div class="range-slider" data-key="${key}">
@@ -375,11 +395,11 @@ function initializeRangeSliders() {
             selectedRange.style.left = `${minPercent}%`;
             selectedRange.style.right = `${100 - maxPercent}%`;
 
-            minDisplay.textContent = key === 'budget' ?
+            minDisplay.textContent = key === 'BUDGET' ?
                 `₹${options.currentMin.toLocaleString()}` :
                 `${options.currentMin.toLocaleString()} sq.ft.`;
 
-            maxDisplay.textContent = key === 'budget' ?
+            maxDisplay.textContent = key === 'BUDGET' ?
                 `₹${options.currentMax.toLocaleString()}` :
                 `${options.currentMax.toLocaleString()} sq.ft.`;
         };
@@ -567,13 +587,13 @@ function handleApplyFilters() {
     const appliedFilters = getAppliedFilters();
 
     if (appliedFilters.length > 0) {
-        let filterMessage = "I've selected these filters: ";
+        let filterMessage = "I want to search property with filters: ";
 
         appliedFilters.forEach((filter, index) => {
             if (index > 0) {
                 filterMessage += index === appliedFilters.length - 1 ? " and " : ", ";
             }
-            filterMessage += `${filter.section} > ${filter.option}`;
+            filterMessage += `${filter.option}`;
         });
 
         // Dispatch the custom event with the filter message

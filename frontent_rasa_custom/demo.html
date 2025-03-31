@@ -82,17 +82,32 @@
                 </div>
 
                 <!-- Filters Tab Content -->
-                <div class="tab-content active" id="filtersTabContent">
+                <!-- <div class="tab-content active" id="filtersTabContent">
                     <div class="filters-container show" id="filtersContainer">
                         <div class="applied-filters" id="appliedFilters"></div>
-                        <div class="text-center py-2">
-                            <button class="hide-filters-btn" id="hideFiltersBtn">Hide already seen</button>
-                        </div>
                         <div id="filterSections"></div>
                         <div class="filter-buttons">
                             <button class="btn-clear" id="clearFiltersBtn">Clear</button>
                             <button class="btn-apply" id="applyFiltersBtn">Apply</button>
                         </div>
+                    </div>
+                </div> -->
+
+                <div class="tab-content active" id="filtersTabContent">
+    
+                    
+                    <div class="filter-chips-container">
+                        <div class="applied-filters" id="appliedFilters"></div>
+                      </div>
+
+                    <div id="filterSections" class="filter-scroll-container">
+                        <!-- Filter controls and content go here -->
+                    </div>
+                    
+                        <!-- Fixed Action Buttons -->
+                    <div class="filter-actions-footer">
+                        <button id="clearFiltersBtn" class="btn btn-outline-secondary">Clear</button>
+                        <button id="applyFiltersBtn" class="btn btn-primary">Apply</button>
                     </div>
                 </div>
 

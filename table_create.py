@@ -7,14 +7,14 @@ def create_database():
     # Database path - using absolute path in user's home directory
     db_dir = os.path.expanduser("~/.rasa_data")  # Creates directory in user's home
     os.makedirs(db_dir, exist_ok=True)
-    db_path = os.path.join(db_dir, "rasa.db")
+    db_path = "/workspaces/Rasa_challenge/rasa.db"
     
     print(f"Creating database at: {db_path}")
     
     # Delete existing database if it exists
     if os.path.exists(db_path):
         try:
-            os.remove(db_path)
+            # os.remove(db_path)
             print("Existing database deleted successfully.")
         except Exception as e:
             print(f"Error deleting old database: {e}")
