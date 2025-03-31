@@ -138,6 +138,46 @@ The custom Rasa UI for real estate focuses on the following compelling features:
 - Flask API
 - GitHub Codespace, Docker
 
+```
+Rasa Challange/
+├── rasa/                       # Rasa chatbot implementation
+│   ├── actions/                # Custom action server code (Python)
+│   │   └── action.py           # Contains custom action logic.
+│   ├── data/                   # Training data for NLU, stories, and rules.
+│   │   ├── flows/              # Rasa flow data.
+│   │   │   ├── flows.yml       # Conversational flows defined in YAML.
+│   │   │   ├── patterns.yml    # NLU patterns for entity extraction.
+│   │   │   └── utils.yml       # Utility functions for flows.
+│   │   └── domain/             # Rasa domain configuration.
+│   │       ├── basic_prop_filters.yml # Domain configuration for property filters.
+│   │       ├── domain.yml      # Core domain definition (intents, entities, slots).
+│   │       └── shared.yml      # Shared domain components.
+│   ├── models/                 # Trained Rasa model files.
+│   ├── prompt_templates/       # Jinja2 prompt templates for LLM interaction.
+│   │   ├── classifier.jinja2   # Template for intent classification.
+│   │   ├── filters.jinja2      # Template for filtering properties.
+│   │   ├── rephrase_prompt.jinja2 # Template for rephrasing user input.
+│   │   └── time_aware_prompt.jinja2 # Template for time aware conversation.
+│   ├── LLMclassifier.py        # Custom intent classifier using LLMs.
+│   └── simple_entity_extractor.py # Custom entity extractor for simple entities.
+├── api/                        # Backend API services (Python Flask)
+│   ├── server.py                # Main API server script.
+│   ├── table_create.py          # Script for creating database tables.
+├── frontend/                   # Custom frontend application (HTML, JavaScript, CSS).
+│   ├── demo.html               # Main HTML file for the demo.
+│   ├── filter_script.js        # JavaScript for filter interactions.
+│   ├── filters_data.js         # Data for filter options.
+│   ├── filters_style.css       # CSS styling for filters.
+│   ├── script.js               # Main JavaScript logic.
+│   └── style.css               # Main CSS styling.
+├── realstate_data/             # Real estate data (e.g., JSON, CSV).
+│   └── ...                     # Data files for various cities/properties.
+├── .devcontainer/              # Dev container configuration.
+│   └── setup.sh                # Script to setup dev environment.
+├── launch.sh                   # Shell script to launch the application.
+└── endpoints.yml                # Rasa endpoints configuration.
+```
+
 ---
 
 This formatted document provides a clear and structured overview of the AI-powered real estate chatbot project, highlighting its vision, problem-solving approach, features, and technology stack.
