@@ -1,0 +1,17 @@
+recipe: default.v1
+language: en
+pipeline:
+- name: custom.custom_cmd_gen.CustomLLMCommandGenerator
+  prompt_template: prompt_templates/time_aware_prompt.jinja2
+  llm:
+    model_group: mistral_llm
+  flow_retrieval:
+      active: true
+      embeddings:
+        model_group: mistral_embeddings
+  
+
+policies:
+- name: FlowPolicy
+
+assistant_id: 20240513-110741-taxonomic-iron

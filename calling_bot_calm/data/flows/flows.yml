@@ -1,0 +1,75 @@
+flows:
+  # --- business Flows ---
+
+# pattern_session_start
+
+  greeting_flow:
+    description: "Greet the user when they say hello or hi on flow sessoin_start"
+    persisted_slots:
+      - dealer_identity_confirm
+    steps:
+      - action: action_set_initial_slots
+      - collect: dealer_identity_confirm
+        description: based on dealer's reply it will be set confirm "yes" or "no", analysis slot for this and set value
+        utter: utter_greet
+        next:
+          - if: slots.dealer_identity_confirm = "yes"
+            then: 
+              - link: explain_flow 
+          - else:
+            - link: alternate_contact_flow
+            
+  explain_flow:
+    description: "Explain the purpose of the conversation"
+    persisted_slots:
+    - visit_date
+    - visit_time  
+    steps:
+      - action: utter_explain_purpose
+      - collect: visit_time
+        description: The time when the dealer wants to client to visit
+      - collect: visit_date
+        description: The date when the dealer wants to client to visit
+      - collect: dealer_alternate_contact
+        description: "Phone number or email for updates"
+      - action: utter_confirm_schedule
+      - link: goodbye
+
+  goodbye:
+    run_pattern_completed: false 
+    description: say goodbye to user
+    steps:
+      - action: utter_farewell
+        next: END
+      
+  alternate_contact_flow:
+    description: "Collect alternate contact information"
+    persisted_slots:
+      - dealer_alternate_contact
+    steps:
+      - collect: dealer_alternate_contact
+        description: "Phone number or email for updates"       
+
+  # --- System Patterns ---
+  list_skills:
+    description: tell the user what i can do
+    steps:
+      - action: utter_skills
+  pattern_cannot_handle:
+    description: when you dont understand the user
+    steps:
+      - action: utter_extra
+  pattern_search:
+    description: Addressing FAQ
+    name: pattern search
+    steps:
+      - action: utter_skills
+  out_of_scope:
+    description: trigger this if the user asks for something we don't have a flow for or an existing command does not apply for it. Conversation repair flow for off-topic interactions that won't disrupt the main conversation. should not respond to greetings or anything else for which there is a flow defined or an existing command is apt for it.
+    steps:
+      - action: utter_out_of_scope
+  pattern_chitchat:
+    description: Conversation repair flow for off-topic interactions that won't disrupt the main conversation. should not respond to greetings or anything else for which there is a flow defined
+    name: pattern chitchat
+    steps:
+      - action: utter_free_chitchat_response

@@ -1,0 +1,145 @@
+version: "3.1"
+
+intents:
+  - greet
+  - affirm
+  - deny
+  - provide_date
+  - provide_time
+  - provide_contact_info
+  - provide_confirmation
+  - goodbye
+  - ask_clarification
+  - other
+
+actions:
+  - action_set_initial_slots
+  - action_save_scheduling_details
+
+entities:
+  - date
+  - time
+  - phone_number
+  - email
+
+slots:
+  master_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: controlled
+
+    
+  property_id:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: controlled
+
+  property_address:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: controlled
+
+  dealer_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: controlled
+
+  dealer_phone:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: controlled
+
+  visit_date:
+    type: text
+    influence_conversation: true
+    
+  visit_time:
+    type: text
+    influence_conversation: true
+    
+  dealer_identity_confirm:
+    type: text
+    influence_conversation: true
+    
+  dealer_confirmation:
+    type: text
+    influence_conversation: true
+    
+  dealer_alternate_contact:
+    type: text
+    influence_conversation: true
+ 
+responses:
+  utter_greet:
+    - text: "Hello, this is an automated call on behalf of {master_name}. I'm calling about the property at {property_address} (Property ID: {property_id}). Am I speaking with {dealer_name}?"
+  
+  utter_explain_purpose:
+    - text: "Great! {master_name} is interested in viewing the property at {property_address} and would like to schedule a visit. I'm calling to arrange that with you."
+  
+  utter_ask_visit_date:
+    - text: "What dates would you be available to show the property to {master_name}?"
+  
+  utter_ask_visit_time:
+    - text: "What time on {visit_date} would work for you to show the property?"
+  
+  utter_confirm_schedule:
+    - text: "So to confirm, you're available to show {master_name} the property at {property_address} on {visit_date} at {visit_time}. Is that correct?"
+  
+  utter_ask_alternate_contact:
+    - text: "Could you please provide a contact number where {master_name} can reach you directly in case there are any changes to the schedule?"
+  
+  utter_schedule_confirmed:
+    - text: "Perfect! I've scheduled the property viewing for {master_name} on {visit_date} at {visit_time}. I've also noted your contact number as {dealer_alternate_contact}. {master_name} is looking forward to meeting you and viewing the property."
+  
+  utter_reschedule_needed:
+    - text: "I understand. Would you like to suggest another date and time that would work better for you?"
+  
+  utter_ask_dealer_alternate_contact:
+    - text: "Please provide an alternative contact number in case we need to reach you."
+
+  utter_goodbye:
+    - text: "Thank you for your time. {master_name} looks forward to meeting you. Have a great day!"
+  
+  utter_ask_clarification:
+    - text: "I'm sorry, I didn't catch that. Could you please repeat?"
+    
+  utter_invalid_date:
+    - text: "That date doesn't work. Please suggest another date for {master_name}'s property viewing."
+  
+  utter_farewell:
+    - text: "Thank you. {master_name} will see you on {visit_date} at {visit_time}. Goodbye."
+  
+  utter_skills:
+    - text: "I'm calling to schedule a viewing for {property_address} on behalf of {master_name}."
+  
+  utter_extra:
+    - text: "{master_name} is eager to view the property and will have questions about its features."
+  
+  utter_else:
+    - text: "Is there anything else about the property {master_name} should know before the viewing?"
+  
+  utter_out_of_scope:
+    - text: "I'm only calling to schedule a viewing at {property_address}. Other matters can be discussed directly with {master_name}."
+      metadata:
+        rephrase: True
+  
+  utter_free_chitchat_response:
+    - text: placeholder_this_utterance_needs_the_rephraser
+      metadata:
+        rephrase: True
+        rephrase_prompt: |
+          The following is a conversation with
+          an AI assistant calling a property dealer. Keep responses brief, professional and focused on scheduling a property viewing.
+          {{history}}
+          {{current_input}}
+          your suggested AI Response:
+
+session_config:
+  session_expiration_time: 1
+  carry_over_slots_to_new_session: true
+  fallback_on_persistence: true
