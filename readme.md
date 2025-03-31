@@ -138,7 +138,8 @@ The custom Rasa UI for real estate focuses on the following compelling features:
 - Flask API
 - GitHub Codespace, Docker
 
-homefindr-ai/
+```
+Rasa Challane/
 ├── .devcontainer/
 │   └── setup.sh                     # Initial setup script for dev container
 │         
@@ -181,7 +182,6 @@ homefindr-ai/
 │         
 ├── server.py                            # API server implementation
 └── table_create.py                      # Database table creation script
-
----
+```
 
 This formatted document provides a clear and structured overview of the AI-powered real estate chatbot project, highlighting its vision, problem-solving approach, features, and technology stack.
