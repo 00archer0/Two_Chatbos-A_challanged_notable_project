@@ -2,9 +2,16 @@
 
 <div align="center">
     
-  [![Rasa CALM](https://img.shields.io/badge/Made_with-Rasa-5A17EE?style=for-the-badge&logo=rasa&logoColor=white)](https://rasa.com)
+ [![Rasa](https://img.shields.io/badge/Made_with-Rasa-5A17EE?style=for-the-badge&logo=rasa&logoColor=white)](https://rasa.com)
   [![Open Source](https://img.shields.io/badge/Open_Source-Yes-brightgreen?style=for-the-badge&logo=github&logoColor=white)](https://github.com)
   [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+  [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+  [![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org)
+  [![LLM](https://img.shields.io/badge/LLM_Powered-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://www.tensorflow.org)
+  [![Gemini](https://img.shields.io/badge/Gemini_Compatible-8E75B2?style=for-the-badge&logo=google&logoColor=white)](https://gemini.google.com)
+  [![Voice Assistant](https://img.shields.io/badge/Voice_Assistant-00979D?style=for-the-badge&logo=dialogflow&logoColor=white)](https://cloud.google.com/dialogflow)
+  [![Smart Bot](https://img.shields.io/badge/Smart_Bot-0066FF?style=for-the-badge&logo=probot&logoColor=white)](https://probot.github.io)
+
 
 </div>
  
