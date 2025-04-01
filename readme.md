@@ -1,211 +1,150 @@
-# 🏠 Two Chatbots with Calm: A Complete Real Estate Assistant Ecosystem
+# $\color{#4285F4}{\textsf{\Large Two Chatbots with Calm:}}$ $\color{#34A853}{\textsf{\Large A Complete Real Estate Assistant Ecosystem}}$
 
 <div align="center">
 
+[![Rasa](https://img.shields.io/badge/Made_with-Rasa-5A17EE?style=for-the-badge&logo=rasa&logoColor=white)](https://rasa.com)
+[![Open Source](https://img.shields.io/badge/Open_Source-Yes-brightgreen?style=for-the-badge&logo=github&logoColor=white)](https://github.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+
 </div>
 
-## 🚀 Vision: Revolutionizing Property Search with Conversational AI
+## $\color{#4285F4}{\textsf{Vision:}}$ $\color{#34A853}{\textsf{Revolutionizing Property Search with Conversational AI}}$
 
 Imagine finding your dream home or the perfect rental with the ease of a casual conversation. Our project introduces a cutting-edge AI-powered chatbot, built with Rasa, that transforms the complex process of property search into an intuitive and personalized experience. This chatbot doesn't just list properties; it understands your needs, answers your questions, and guides you every step of the way.
 
-## 🔍 The Problem: Navigating the Real Estate Maze
+## $\color{#4285F4}{\textsf{The Problem:}}$ $\color{#DB4437}{\textsf{Navigating the Real Estate Maze}}$
 
 Finding the right property can be overwhelming. Users face:
 
-- **Information overload:** Sifting through endless listings and details.
-- **Time constraints:** Scheduling viewings and gathering information is time-consuming.
-- **Lack of personalization:** Generic search filters often miss unique preferences.
-- **Communication gaps:** Traditional communication methods can be slow and inefficient.
+- $\color{#DB4437}{\textsf{Information overload:}}$ Sifting through endless listings and details.
+- $\color{#DB4437}{\textsf{Time constraints:}}$ Scheduling viewings and gathering information is time-consuming.
+- $\color{#DB4437}{\textsf{Lack of personalization:}}$ Generic search filters often miss unique preferences.
+- $\color{#DB4437}{\textsf{Communication gaps:}}$ Traditional communication methods can be slow and inefficient.
 
-## ✨ What Makes This Solution Revolutionary
+## $\color{#4285F4}{\textsf{What Makes This Solution Revolutionary}}$
 
-Our solution introduces a groundbreaking **dual-chatbot system** that creates a seamless end-to-end real estate experience. By separating property search and dealer scheduling into two specialized AI assistants, we've created a revolutionary approach that ensures focused expertise, efficient workflows, and comprehensive support throughout the entire property journey.
+Our solution introduces a groundbreaking dual-chatbot system that creates a seamless end-to-end real estate experience. By separating property search and dealer scheduling into two specialized AI assistants, we've created a revolutionary approach that ensures focused expertise, efficient workflows, and comprehensive support throughout the entire property journey.
 
-<table>
-  <tr>
-    <th style="background-color:#4285F4; color:white;">🏘️ Property Search Assistant</th>
-    <th style="background-color:#34A853; color:white;">🗓️ Dealer Visit Scheduler Bot</th>
-  </tr>
-  <tr>
-    <td>
-      • Understands complex property requirements<br>
-      • Conducts personalized searches<br>
-      • Provides detailed property information<br>
-      • Offers neighborhood insights<br>
-      • Handles property comparisons<br>
-      • Manages saved properties
-    </td>
-    <td>
-      • Confirms dealer identity<br>
-      • Schedules property viewings<br>
-      • Manages visit calendars<br>
-      • Reschedules appointments<br>
-      • Sends reminders<br>
-      • Coordinates between buyers and sellers
-    </td>
-  </tr>
-</table>
+<div align="center">
 
-## 💡 Evolution and Problem-Solving
+| $\color{#4285F4}{\textsf{Property Search Assistant}}$ | $\color{#34A853}{\textsf{Dealer Visit Scheduler Bot}}$ |
+|------------------------|--------------------------------|
+| • Understands complex property requirements<br>• Conducts personalized searches<br>• Provides detailed property information<br>• Offers neighborhood insights<br>• Handles property comparisons<br>• Manages saved properties | • Confirms dealer identity<br>• Schedules property viewings<br>• Manages visit calendars<br>• Reschedules appointments<br>• Sends reminders<br>• Coordinates between buyers and sellers |
+
+</div>
+
+## $\color{#4285F4}{\textsf{Evolution and Problem-Solving}}$
 
 Two chatbots are connected to provide a seamless and comprehensive real estate experience. The first chatbot focuses on property search and user interaction, while the second chatbot handles dealer visit scheduling. This dual-chatbot system ensures that users receive personalized property recommendations and can efficiently schedule visits with dealers.
 
-## 🤖 Chatbot System Architecture
+## $\color{#4285F4}{\textsf{Chatbot System Architecture}}$
 
-<div align="center">
-  
-
-</div>
-
-### `Chatbot One`: Property Search Assistant 🏠
+### $\color{#4285F4}{\textsf{Chatbot One:}}$ $\color{#4285F4}{\textsf{Property Search Assistant}}$
 
 This chatbot is designed to assist users in finding their ideal property through a conversational interface.
 
-<table>
-  <tr>
-    <th colspan="2" style="background-color:#4285F4; color:white;">Key Features</th>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h4>👋 Welcome and Initial Inquiry</h4>
-      <ul>
-        <li>Greets users and determines their intent (buy or rent)</li>
-        <li>Initiates the property search conversation</li>
-      </ul>
-    </td>
-    <td width="50%">
-      <h4>🔍 Dynamic Search and Filtering</h4>
-      <ul>
-        <li>Collects detailed user preferences</li>
-        <li>Dynamically queries a database</li>
-        <li><code>show_property_results_flow</code>: Displays search results</li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <h4>📊 Detailed Property Information</h4>
-      <ul>
-        <li><code>show_property_details_flow</code>: Comprehensive details</li>
-        <li><code>show_property_neighborhood_details_flow</code>: Neighborhood info</li>
-        <li><code>show_property_locality_details_flow</code>: Locality info</li>
-        <li>And many more specialized information flows...</li>
-      </ul>
-    </td>
-    <td>
-      <h4>⚖️ Property Comparison</h4>
-      <ul>
-        <li><code>property_comparison_flow</code>: Side-by-side comparison</li>
-      </ul>
-      <h4>💰 Buy and Rent Specific Flows</h4>
-      <ul>
-        <li><code>property_buy_flow</code>: For purchases</li>
-        <li><code>property_rent_flow</code>: For rentals</li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <h4>📅 Scheduling and Management</h4>
-      <ul>
-        <li><code>Visit_scheduling_flow</code>: Schedules viewings</li>
-        <li><code>check_scheduled_visits_flow</code>: Checks visits</li>
-        <li><code>reschedule_visit_flow</code>: Reschedules visits</li>
-        <li><code>cancel_visit_flow</code>: Cancels visits</li>
-      </ul>
-    </td>
-    <td>
-      <h4>👤 User Management</h4>
-      <ul>
-        <li><code>show_saved_properties_flow</code>: Saved properties</li>
-      </ul>
-      <h4>🔄 Search Reset</h4>
-      <ul>
-        <li><code>reset_flow</code>: Clears all search filters</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+- $\color{#4285F4}{\textsf{Welcome and Initial Inquiry:}}$
+  - Greets users and determines their intent (buy or rent).
+  - Initiates the property search conversation.
 
-### `Chatbot Two`: Dealer Visit Scheduler 📅
+- $\color{#4285F4}{\textsf{Dynamic Search and Filtering:}}$
+  - Collects detailed user preferences (bedrooms, bathrooms, area, budget, amenities, location).
+  - Dynamically queries a database to retrieve relevant property listings.
+  - `show_property_results_flow`: Displays search results based on user-provided criteria.
 
-This chatbot streamlines the process of scheduling client visits with dealers.
+- $\color{#4285F4}{\textsf{Detailed Property Information:}}$
+  - `show_property_details_flow`: Provides comprehensive details about a specific property.
+  - `show_property_neighborhood_details_flow`: Presents neighborhood information.
+  - `show_property_locality_details_flow`: Presents locality information.
+  - `show_property_society_details_flow`: Presents society information.
+  - `show_property_cultural_details_flow`: Presents cultural information.
+  - `show_property_amenities_details_flow`: Presents amenities information.
+  - `show_property_transport_details_flow`: Presents transportation information.
+  - `show_property_school_details_flow`: Presents school information.
+  - `show_property_safety_details_flow`: Presents safety information.
+  - `show_property_commercial_details_flow`: Presents commercial information.
 
-<table>
-  <tr>
-    <th colspan="2" style="background-color:#34A853; color:white;">Call Flows</th>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h4>👋 <code>greeting_flow</code></h4>
-      <ul>
-        <li>Greets the dealer and confirms identity</li>
-        <li>Transitions to appropriate next flow</li>
-      </ul>
-    </td>
-    <td width="50%">
-      <h4>ℹ️ <code>explain_flow</code></h4>
-      <ul>
-        <li>Explains conversation purpose</li>
-        <li>Collects visit details</li>
-        <li>Confirms schedule</li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <h4>👋 <code>goodbye</code></h4>
-      <ul>
-        <li>Ends the conversation with a farewell message</li>
-      </ul>
-    </td>
-    <td>
-      <h4>📞 <code>alternate_contact_flow</code></h4>
-      <ul>
-        <li>Collects alternate contact information</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+- $\color{#4285F4}{\textsf{Property Comparison:}}$
+  - `property_comparison_flow`: Enables side-by-side comparison of properties.
 
-#### Rasa's Calm System Patterns 🧘
+- $\color{#4285F4}{\textsf{Buy and Rent Specific Flows:}}$
+  - `property_buy_flow`: Tailored conversation for property purchase.
+  - `property_rent_flow`: Tailored conversation for rental properties.
 
-- **`list_skills`**: Provides information about the chatbot's capabilities.
-- **`pattern_cannot_handle`**: Handles user inputs that the chatbot doesn't understand.
-- **`pattern_search`**: Handles FAQ.
-- **`out_of_scope`**: Handles off-topic user requests that won't disrupt the main flow.
-- **`pattern_chitchat`**: Handles off-topic conversation that won't disrupt the main flow.
+- $\color{#4285F4}{\textsf{Scheduling and Management:}}$
+  - `Visit_scheduling_flow`: Schedules property viewings.
+  - `check_scheduled_visits_flow`: Checks scheduled visits.
+  - `reschedule_visit_flow`: Reschedules visits.
+  - `cancel_visit_flow`: Cancels visits.
 
-## 📱 Custom Rasa UI
+- $\color{#4285F4}{\textsf{User Management:}}$
+  - `show_saved_properties_flow`: Displays saved properties.
 
-<div align="center">
-  
+- $\color{#4285F4}{\textsf{Search Reset:}}$
+  - `reset_flow`: Clears all search filters.
 
-</div>
+### $\color{#34A853}{\textsf{Chatbot Two:}}$ $\color{#34A853}{\textsf{Dealer Visit Scheduler}}$
+
+This chatbot is designed to streamline the process of scheduling client visits with dealers.
+
+#### $\color{#34A853}{\textsf{Call Flows}}$
+
+- $\color{#34A853}{\textsf{greeting_flow:}}$
+  - Greets the dealer and confirms their identity.
+  - Transitions to `explain_flow` if identity is confirmed, or `alternate_contact_flow` if not.
+
+- $\color{#34A853}{\textsf{explain_flow:}}$
+  - Explains the purpose of the conversation (scheduling visits).
+  - Collects visit date, time, and alternate contact information.
+  - Confirms the schedule and transitions to `goodbye`.
+
+- $\color{#34A853}{\textsf{goodbye:}}$
+  - Ends the conversation with a farewell message.
+
+- $\color{#34A853}{\textsf{alternate_contact_flow:}}$
+  - Collects alternate contact information for the dealer.
+
+#### $\color{#34A853}{\textsf{Rasa's Calm System Patterns}}$
+
+- $\color{#34A853}{\textsf{list_skills:}}$
+  - Provides information about the chatbot's capabilities.
+
+- $\color{#34A853}{\textsf{pattern_cannot_handle:}}$
+  - Handles user inputs that the chatbot doesn't understand.
+
+- $\color{#34A853}{\textsf{pattern_search:}}$
+  - Handles FAQ.
+
+- $\color{#34A853}{\textsf{out_of_scope:}}$
+  - Handles off-topic user requests that won't disrupt the main flow.
+
+- $\color{#34A853}{\textsf{pattern_chitchat:}}$
+  - Handles off-topic conversation that won't disrupt the main flow.
+
+## $\color{#F4B400}{\textsf{Call to Action:}}$ $\color{#F4B400}{\textsf{Let's Build the Future of Real Estate}}$
+
+This project demonstrates the power of conversational AI in transforming the real estate industry. We're excited to collaborate and bring this innovative solution to the Rasa challenge.
+
+## $\color{#F4B400}{\textsf{Custom Rasa UI}}$
 
 The custom Rasa UI for real estate focuses on the following compelling features:
 
-- **Conversational interface** for property search.
-- **Property cards** with visual representation and key details.
-- **Session management** that preserves conversation history.
-- **Advanced filtering capabilities**.
-- The ability to **save favorite properties**.
+- $\color{#F4B400}{\textsf{Conversational interface}}$ for property search.
+- $\color{#F4B400}{\textsf{Property cards}}$ with visual representation and key details.
+- $\color{#F4B400}{\textsf{Session management}}$ that preserves conversation history.
+- $\color{#F4B400}{\textsf{Advanced filtering capabilities.}}$
+- The ability to $\color{#F4B400}{\textsf{save favorite properties.}}$
 
-## 🛠️ Technology Stack
+## $\color{#DB4437}{\textsf{Technology Used}}$
 
-<div align="center">
-  
+- $\color{#DB4437}{\textsf{Rasa framework}}$ (Calm, RAG)
+- $\color{#DB4437}{\textsf{Faiss vector database}}$
+- $\color{#DB4437}{\textsf{SQLite SQL database}}$
+- $\color{#DB4437}{\textsf{HTML, CSS, JS}}$ for front end
+- $\color{#DB4437}{\textsf{Flask API}}$
+- $\color{#DB4437}{\textsf{GitHub Codespace, Docker}}$
 
-</div>
-
-- **Rasa framework** (Calm, RAG)
-- **Faiss vector database**
-- **SQLite SQL database**
-- **HTML, CSS, JS** for front end
-- **Flask API**
-- **GitHub Codespace, Docker**
-
-## 📂 Project Structure
+## $\color{#DB4437}{\textsf{Project Structure}}$
 
 ```
 Rasa Challange/
@@ -247,48 +186,19 @@ Rasa Challange/
 └── endpoints.yml                      # Rasa endpoints configuration.
 ```
 
-## 🚀 Rasa Challenge Alignment
-
-<table>
-  <tr>
-    <th style="background-color:#DB4437; color:white;">Feature/Question</th>
-    <th style="background-color:#0F9D58; color:white;">Answer</th>
-  </tr>
-  <tr>
-    <td>Uniqueness & Problem-Solving</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>Handles Complex Conversations</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>Combines RAG and Transactional Flows Effectively</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>Integrations with Sophisticated Backend Systems</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>Uses Open-Source LLMs</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>Uses Fine-Tuned Models</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>Integrations with Other AI Tools</td>
-    <td>✅</td>
-  </tr>
-</table>
-
-## 📞 Call to Action: Let's Build the Future of Real Estate
-
-This project demonstrates the power of conversational AI in transforming the real estate industry. We're excited to collaborate and bring this innovative solution to the Rasa challenge.
+## $\color{#F4B400}{\textsf{Rasa Challenge Alignment}}$
 
 <div align="center">
-  
+
+| $\color{#DB4437}{\textsf{Feature/Question}}$ | $\color{#0F9D58}{\textsf{Answer}}$ |
+| :------------------------------------------------------------------------------- | :----- |
+| $\color{#DB4437}{\textsf{Uniqueness & Problem-Solving}}$ | ✅     |
+| $\color{#DB4437}{\textsf{Handles Complex Conversations}}$ | ✅     |
+| $\color{#DB4437}{\textsf{Combines RAG and Transactional Flows Effectively}}$ | ✅     |
+| $\color{#DB4437}{\textsf{Integrations with Sophisticated Backend Systems}}$ | ✅     |
+| $\color{#DB4437}{\textsf{Uses Open-Source LLMs}}$ | ✅ |
+| $\color{#DB4437}{\textsf{Uses Fine-Tuned Models}}$ | ✅  |
+| $\color{#DB4437}{\textsf{Integrations with Other AI Tools}}$ | ✅     |
 
 </div>
+
