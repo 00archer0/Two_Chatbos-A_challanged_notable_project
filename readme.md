@@ -1,10 +1,8 @@
 # 🏠 Two Chatbots with Calm: A Complete Real Estate Assistant Ecosystem
 
 <div align="center">
-  
-  ![UI Banner](https://via.placeholder.com/1200x300)
-  
-  [![Rasa](https://img.shields.io/badge/Made_with-Rasa-5A17EE?style=for-the-badge&logo=rasa&logoColor=white)](https://rasa.com)
+    
+  [![Rasa CALM](https://img.shields.io/badge/Made_with-Rasa-5A17EE?style=for-the-badge&logo=rasa&logoColor=white)](https://rasa.com)
   [![Open Source](https://img.shields.io/badge/Open_Source-Yes-brightgreen?style=for-the-badge&logo=github&logoColor=white)](https://github.com)
   [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
