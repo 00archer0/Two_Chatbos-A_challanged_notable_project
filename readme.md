@@ -19,12 +19,6 @@ Finding the right property can be overwhelming. Users face:
 
 ## ✨ What Makes This Solution Revolutionary
 
-<div align="center">
-  
-  ![Dual Chatbot System](https://via.placeholder.com/800x400)
-
-</div>
-
 Our solution introduces a groundbreaking **dual-chatbot system** that creates a seamless end-to-end real estate experience. By separating property search and dealer scheduling into two specialized AI assistants, we've created a revolutionary approach that ensures focused expertise, efficient workflows, and comprehensive support throughout the entire property journey.
 
 <table>
