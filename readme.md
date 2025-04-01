@@ -1,12 +1,14 @@
-## Two Chatbots with Calm: An AI-Powered Real Estate Chatbot
+# 🏠 Two Chatbots with Calm: A Complete Real Estate Assistant Ecosystem
 
----
+<div align="center">
 
-### **Vision: Revolutionizing Property Search with Conversational AI**
+</div>
+
+## 🚀 Vision: Revolutionizing Property Search with Conversational AI
 
 Imagine finding your dream home or the perfect rental with the ease of a casual conversation. Our project introduces a cutting-edge AI-powered chatbot, built with Rasa, that transforms the complex process of property search into an intuitive and personalized experience. This chatbot doesn't just list properties; it understands your needs, answers your questions, and guides you every step of the way.
 
-### **The Problem: Navigating the Real Estate Maze**
+## 🔍 The Problem: Navigating the Real Estate Maze
 
 Finding the right property can be overwhelming. Users face:
 
@@ -15,173 +17,284 @@ Finding the right property can be overwhelming. Users face:
 - **Lack of personalization:** Generic search filters often miss unique preferences.
 - **Communication gaps:** Traditional communication methods can be slow and inefficient.
 
-### **Our Solution: An Intelligent Conversational Partner**
+## ✨ What Makes This Solution Revolutionary
 
-#### **Evolution and Problem-Solving**
+<div align="center">
+  
+  ![Dual Chatbot System](https://via.placeholder.com/800x400)
+
+</div>
+
+Our solution introduces a groundbreaking **dual-chatbot system** that creates a seamless end-to-end real estate experience. By separating property search and dealer scheduling into two specialized AI assistants, we've created a revolutionary approach that ensures focused expertise, efficient workflows, and comprehensive support throughout the entire property journey.
+
+<table>
+  <tr>
+    <th style="background-color:#4285F4; color:white;">🏘️ Property Search Assistant</th>
+    <th style="background-color:#34A853; color:white;">🗓️ Dealer Visit Scheduler Bot</th>
+  </tr>
+  <tr>
+    <td>
+      • Understands complex property requirements<br>
+      • Conducts personalized searches<br>
+      • Provides detailed property information<br>
+      • Offers neighborhood insights<br>
+      • Handles property comparisons<br>
+      • Manages saved properties
+    </td>
+    <td>
+      • Confirms dealer identity<br>
+      • Schedules property viewings<br>
+      • Manages visit calendars<br>
+      • Reschedules appointments<br>
+      • Sends reminders<br>
+      • Coordinates between buyers and sellers
+    </td>
+  </tr>
+</table>
+
+## 💡 Evolution and Problem-Solving
 
 Two chatbots are connected to provide a seamless and comprehensive real estate experience. The first chatbot focuses on property search and user interaction, while the second chatbot handles dealer visit scheduling. This dual-chatbot system ensures that users receive personalized property recommendations and can efficiently schedule visits with dealers.
 
-#### `Chatbot One`: Property Search Assistant
+## 🤖 Chatbot System Architecture
+
+<div align="center">
+  
+
+</div>
+
+### `Chatbot One`: Property Search Assistant 🏠
 
 This chatbot is designed to assist users in finding their ideal property through a conversational interface.
 
-- **Welcome and Initial Inquiry:**
-  - Greets users and determines their intent (buy or rent).
-  - Initiates the property search conversation.
+<table>
+  <tr>
+    <th colspan="2" style="background-color:#4285F4; color:white;">Key Features</th>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h4>👋 Welcome and Initial Inquiry</h4>
+      <ul>
+        <li>Greets users and determines their intent (buy or rent)</li>
+        <li>Initiates the property search conversation</li>
+      </ul>
+    </td>
+    <td width="50%">
+      <h4>🔍 Dynamic Search and Filtering</h4>
+      <ul>
+        <li>Collects detailed user preferences</li>
+        <li>Dynamically queries a database</li>
+        <li><code>show_property_results_flow</code>: Displays search results</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h4>📊 Detailed Property Information</h4>
+      <ul>
+        <li><code>show_property_details_flow</code>: Comprehensive details</li>
+        <li><code>show_property_neighborhood_details_flow</code>: Neighborhood info</li>
+        <li><code>show_property_locality_details_flow</code>: Locality info</li>
+        <li>And many more specialized information flows...</li>
+      </ul>
+    </td>
+    <td>
+      <h4>⚖️ Property Comparison</h4>
+      <ul>
+        <li><code>property_comparison_flow</code>: Side-by-side comparison</li>
+      </ul>
+      <h4>💰 Buy and Rent Specific Flows</h4>
+      <ul>
+        <li><code>property_buy_flow</code>: For purchases</li>
+        <li><code>property_rent_flow</code>: For rentals</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h4>📅 Scheduling and Management</h4>
+      <ul>
+        <li><code>Visit_scheduling_flow</code>: Schedules viewings</li>
+        <li><code>check_scheduled_visits_flow</code>: Checks visits</li>
+        <li><code>reschedule_visit_flow</code>: Reschedules visits</li>
+        <li><code>cancel_visit_flow</code>: Cancels visits</li>
+      </ul>
+    </td>
+    <td>
+      <h4>👤 User Management</h4>
+      <ul>
+        <li><code>show_saved_properties_flow</code>: Saved properties</li>
+      </ul>
+      <h4>🔄 Search Reset</h4>
+      <ul>
+        <li><code>reset_flow</code>: Clears all search filters</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
-- **Dynamic Search and Filtering:**
-  - Collects detailed user preferences (bedrooms, bathrooms, area, budget, amenities, location).
-  - Dynamically queries a database to retrieve relevant property listings.
-  - `show_property_results_flow`: Displays search results based on user-provided criteria.
+### `Chatbot Two`: Dealer Visit Scheduler 📅
 
-- **Detailed Property Information:**
-  - `show_property_details_flow`: Provides comprehensive details about a specific property.
-  - `show_property_neighborhood_details_flow`: Presents neighborhood information.
-  - `show_property_locality_details_flow`: Presents locality information.
-  - `show_property_society_details_flow`: Presents society information.
-  - `show_property_cultural_details_flow`: Presents cultural information.
-  - `show_property_amenities_details_flow`: Presents amenities information.
-  - `show_property_transport_details_flow`: Presents transportation information.
-  - `show_property_school_details_flow`: Presents school information.
-  - `show_property_safety_details_flow`: Presents safety information.
-  - `show_property_commercial_details_flow`: Presents commercial information.
+This chatbot streamlines the process of scheduling client visits with dealers.
 
-- **Property Comparison:**
-  - `property_comparison_flow`: Enables side-by-side comparison of properties.
+<table>
+  <tr>
+    <th colspan="2" style="background-color:#34A853; color:white;">Call Flows</th>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h4>👋 <code>greeting_flow</code></h4>
+      <ul>
+        <li>Greets the dealer and confirms identity</li>
+        <li>Transitions to appropriate next flow</li>
+      </ul>
+    </td>
+    <td width="50%">
+      <h4>ℹ️ <code>explain_flow</code></h4>
+      <ul>
+        <li>Explains conversation purpose</li>
+        <li>Collects visit details</li>
+        <li>Confirms schedule</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h4>👋 <code>goodbye</code></h4>
+      <ul>
+        <li>Ends the conversation with a farewell message</li>
+      </ul>
+    </td>
+    <td>
+      <h4>📞 <code>alternate_contact_flow</code></h4>
+      <ul>
+        <li>Collects alternate contact information</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
-- **Buy and Rent Specific Flows:**
-  - `property_buy_flow`: Tailored conversation for property purchase.
-  - `property_rent_flow`: Tailored conversation for rental properties.
+#### Rasa's Calm System Patterns 🧘
 
-- **Scheduling and Management:**
-  - `Visit_scheduling_flow`: Schedules property viewings.
-  - `check_scheduled_visits_flow`: Checks scheduled visits.
-  - `reschedule_visit_flow`: Reschedules visits.
-  - `cancel_visit_flow`: Cancels visits.
+- **`list_skills`**: Provides information about the chatbot's capabilities.
+- **`pattern_cannot_handle`**: Handles user inputs that the chatbot doesn't understand.
+- **`pattern_search`**: Handles FAQ.
+- **`out_of_scope`**: Handles off-topic user requests that won't disrupt the main flow.
+- **`pattern_chitchat`**: Handles off-topic conversation that won't disrupt the main flow.
 
-- **User Management:**
-  - `show_saved_properties_flow`: Displays saved properties.
+## 📱 Custom Rasa UI
 
-- **Search Reset:**
-  - `reset_flow`: Clears all search filters.
+<div align="center">
+  
 
-#### `Chatbot Two`: Dealer Visit Scheduler
-
-This chatbot is designed to streamline the process of scheduling client visits with dealers.
-
-##### Call Flows
-
-- **`greeting_flow`**:
-  - Greets the dealer and confirms their identity.
-  - Transitions to `explain_flow` if identity is confirmed, or `alternate_contact_flow` if not.
-
-- **`explain_flow`**:
-  - Explains the purpose of the conversation (scheduling visits).
-  - Collects visit date, time, and alternate contact information.
-  - Confirms the schedule and transitions to `goodbye`.
-
-- **`goodbye`**:
-  - Ends the conversation with a farewell message.
-
-- **`alternate_contact_flow`**:
-  - Collects alternate contact information for the dealer.
-
-##### Rasa's Calm System Patterns
-
-- **`list_skills`**:
-  - Provides information about the chatbot's capabilities.
-
-- **`pattern_cannot_handle`**:
-  - Handles user inputs that the chatbot doesn't understand.
-
-- **`pattern_search`**:
-  - Handles FAQ.
-
-- **`out_of_scope`**:
-  - Handles off-topic user requests that won't disrupt the main flow.
-
-- **`pattern_chitchat`**:
-  - Handles off-topic conversation that won't disrupt the main flow.
-
-### **Call to Action: Let's Build the Future of Real Estate**
-
-Demonstrates the power of conversational AI in transforming the real estate industry. I'm excited to collaborate and bring this innovative solution to the Rasa challenge.
-
-### **Rasa Challenge Alignment**
-
-| Feature/Question                                                                 | Answer |
-| :------------------------------------------------------------------------------- | :----- |
-| **Uniqueness & Problem-Solving**                                                | ✅     |
-| **Handles Complex Conversations (context switch, corrections, interruptions)**  | ✅     |
-| **Combines RAG and Transactional Flows Effectively**                            | ✅     |
-| **Integrations with Sophisticated Backend Systems**                             | ✅     |
-| **Uses Open-Source LLMs**                                                       | ✅ (Optional) |
-| **Uses Fine-Tuned Models**                                                      | ✅ (Optional) |
-| **Integrations with Other AI Tools**                                            | ✅     |
-
-## **Custom Rasa UI**
+</div>
 
 The custom Rasa UI for real estate focuses on the following compelling features:
 
-- Conversational interface for property search.
-- Property cards with visual representation and key details.
-- Session management that preserves conversation history.
-- Advanced filtering capabilities.
-- The ability to save favorite properties.
+- **Conversational interface** for property search.
+- **Property cards** with visual representation and key details.
+- **Session management** that preserves conversation history.
+- **Advanced filtering capabilities**.
+- The ability to **save favorite properties**.
 
-### **Technology Used**
+## 🛠️ Technology Stack
 
-- Rasa framework (Calm, RAG)
-- Faiss vector database
-- SQLite SQL database
-- HTML, CSS, JS for front end
-- Flask API
-- GitHub Codespace, Docker
+<div align="center">
+  
+
+</div>
+
+- **Rasa framework** (Calm, RAG)
+- **Faiss vector database**
+- **SQLite SQL database**
+- **HTML, CSS, JS** for front end
+- **Flask API**
+- **GitHub Codespace, Docker**
+
+## 📂 Project Structure
 
 ```
-Rasa Challane/
-├── .devcontainer/
-│   └── setup.sh                     # Initial setup script for dev container
-│         
-├── calling_bot_calm/                # RASA Directory for calling bot
-│   ├── data/flows/flows.yml             # Rasa flow data
-│   ├── domain/domain.yml                # Rasa domain configuration
-│   └── endpoints.yml                    # Rasa endpoints configuration
-│         
-├── frontent_rasa_custom/            # Custom Rasa frontend
-│   ├── demo.html                        # HTML demo page
-│   ├── filter_script.js                 # Filter functionality
-│   ├── filters_data.js         # Filter data
-│   ├── filters_style.css       # Filter styling
-│   ├── script.js                        # Main JavaScript
-│   └── style.css                        # Main CSS
-│         
-├── launch.sh                         # Application launcher script
-│         
-├── realstate_bot_calm/               # Real estate bot implementation
-│   ├── LLMclassifier.py              # Custom LLM intent classifier
-│   ├── simple_entity_extractor.py    # Custom entity extraction
-│   ├── actions/                      # Custom Rasa actions
-│   │   └── action.py                    # Action code
-│   ├── data/flows/                   # Flow definitions
-│   │   ├── flows.yml                    # Main flows
-│   │   ├── patterns.yml                 # Pattern definitions
-│   │   └── utils.yml                    # Utility flows
-│   ├── docs/                            # Documentation
-│   ├── domain/                          # Domain configurations
-│   │   ├── basic_prop_filters.yml       # Property filter definitions
-│   │   ├── domain.yml                   # Main domain file
-│   │   └── shared.yml                   # Shared domain components
-│   └── prompt_templates/                # Jinja2 templates
-│       ├── classifier.jinja2            # Classification prompts
-│       ├── filters.jinja2               # Filter prompts
-│       ├── rephrase_prompt.jinja2       # Rephrasing prompts
-│       └── time_aware_prompt.jinja2     # Time-aware prompts
-│
-├── realstate_data/                      # Real estate datasets by city
-│         
-├── server.py                            # API server implementation
-└── table_create.py                      # Database table creation script
+Rasa Challange/
+├── rasa/                              # Rasa chatbot implementation
+│   ├── actions/                     # Custom action server code (Python)
+│   │   └── action.py                  # Contains custom action logic.
+│   ├── data/                          # Training data for NLU, stories, and rules.
+│   │   ├── flows/                   # Rasa flow data.
+│   │   │   ├── flows.yml              # Conversational flows defined in YAML.
+│   │   │   ├── patterns.yml           # NLU patterns for entity extraction.
+│   │   │   └── utils.yml              # Utility functions for flows.
+│   │   └── domain/                    # Rasa domain configuration.
+│   │       ├── basic_prop_filters.yml # Domain configuration for property filters.
+│   │       ├── domain.yml             # Core domain definition (intents, entities, slots).
+│   │       └── shared.yml             # Shared domain components.
+│   ├── models/                        # Trained Rasa model files.
+│   ├── prompt_templates/              # Jinja2 prompt templates for LLM interaction.
+│   │   ├── classifier.jinja2          # Template for intent classification.
+│   │   ├── filters.jinja2             # Template for filtering properties.
+│   │   ├── rephrase_prompt.jinja2     # Template for rephrasing user input.
+│   │   └── time_aware_prompt.jinja2   # Template for time aware conversation.
+│   ├── LLMclassifier.py             # Custom intent classifier using LLMs.
+│   └── simple_entity_extractor.py   # Custom entity extractor for simple entities.
+├── api/                               # Backend API services (Python Flask)
+│   ├── server.py                      # Main API server script.
+│   ├── table_create.py                # Script for creating database tables.
+├── frontend/                        # Custom frontend application (HTML, JavaScript, CSS).
+│   ├── demo.html                      # Main HTML file for the demo.
+│   ├── filter_script.js               # JavaScript for filter interactions.
+│   ├── filters_data.js                # Data for filter options.
+│   ├── filters_style.css              # CSS styling for filters.
+│   ├── script.js                      # Main JavaScript logic.
+│   └── style.css                      # Main CSS styling.
+├── realstate_data/                    # Real estate data (e.g., JSON, CSV).
+│   └── ...                            # Data files for various cities/properties.
+├── .devcontainer/                     # Dev container configuration.
+│   └── setup.sh                       # Script to setup dev environment.
+├── launch.sh                          # Shell script to launch the application.
+└── endpoints.yml                      # Rasa endpoints configuration.
 ```
 
-This formatted document provides a clear and structured overview of the AI-powered real estate chatbot project, highlighting its vision, problem-solving approach, features, and technology stack.
+## 🚀 Rasa Challenge Alignment
+
+<table>
+  <tr>
+    <th style="background-color:#DB4437; color:white;">Feature/Question</th>
+    <th style="background-color:#0F9D58; color:white;">Answer</th>
+  </tr>
+  <tr>
+    <td>Uniqueness & Problem-Solving</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <td>Handles Complex Conversations</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <td>Combines RAG and Transactional Flows Effectively</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <td>Integrations with Sophisticated Backend Systems</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <td>Uses Open-Source LLMs</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <td>Uses Fine-Tuned Models</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <td>Integrations with Other AI Tools</td>
+    <td>✅</td>
+  </tr>
+</table>
+
+## 📞 Call to Action: Let's Build the Future of Real Estate
+
+This project demonstrates the power of conversational AI in transforming the real estate industry. We're excited to collaborate and bring this innovative solution to the Rasa challenge.
+
+<div align="center">
+  
+
+</div>
