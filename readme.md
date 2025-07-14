@@ -1,8 +1,8 @@
 # 🏆 Rasa Agent Building Challenge 2025 Winner 🏆
 
-We are thrilled to announce that our project has been awarded **🥇 1st Prize** in the **[Rasa Agent Building Challenge 2025](https://github.com/RasaHQ/rasa-community-challenge-2025#the-winners)**!
+We are thrilled to announce that this project has been awarded **🥇 Notable project top 10 out of 450+** in the **[Rasa Agent Building Challenge 2025](https://github.com/RasaHQ/rasa-community-challenge-2025#the-winners)**!
 
-This achievement highlights our commitment to pushing the boundaries of conversational AI and creating innovative, real-world solutions. Our project was recognized for its unique approach to solving complex real estate challenges with a sophisticated dual-chatbot system.
+This achievement highlights my commitment to pushing the boundaries of conversational AI and creating innovative, real-world solutions. Our project was recognized for its unique approach to solving complex real estate challenges with a sophisticated dual-chatbot system.
 
 ---
 
